@@ -1,0 +1,10 @@
+domreg.lt
+Seconds Level     Message
+======= ========= =======
+Looks OK.
+
+ktu.lt
+Seconds Level     Message
+======= ========= =======
+Looks OK.
+
