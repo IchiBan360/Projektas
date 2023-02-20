@@ -3,13 +3,28 @@ Seconds Level     Message
 ======= ========= =======
 Looks OK.
 
+Seconds Level     Message
+======= ========= =======
+   0.45 NOTICE    There are neither DS nor DNSKEY records for the zone.
+   0.45 NOTICE    The zone is not signed with DNSSEC.
+
 ktu.lt
 Seconds Level     Message
 ======= ========= =======
 Looks OK.
 
+Seconds Level     Message
+======= ========= =======
+   0.46 NOTICE    There are neither DS nor DNSKEY records for the zone.
+   0.46 NOTICE    The zone is not signed with DNSSEC.
+
 vdu.lt
 Seconds Level     Message
 ======= ========= =======
 Looks OK.
+
+Seconds Level     Message
+======= ========= =======
+   0.37 NOTICE    There are neither DS nor DNSKEY records for the zone.
+   0.37 NOTICE    The zone is not signed with DNSSEC.
 
