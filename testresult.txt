@@ -1,16 +1,10 @@
-Lyginami domenai: skelbiu.lt domreg.lt fortum.lt kartulengviau.lt seb.lt
-Naudojami testai: dnssec nameserver zone
-skelbiu.lt
+pigu.lt
+
 testo tipas: dnssec
 Level     Message
 ========= =======
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
-
-testo tipas: nameserver
-Level     Message
-========= =======
-Looks OK.
 
 testo tipas: zone
 Level     Message
@@ -18,17 +12,20 @@ Level     Message
 NOTICE    SOA 'refresh' value (10000) is less than the recommended one (14400).
 NOTICE    SOA 'retry' value (2400) is less than the recommended one (3600).
 
+testo tipas: nameserver
+Level     Message
+========= =======
+Looks OK.
+
+=======================================================
+
 domreg.lt
+
 testo tipas: dnssec
 Level     Message
 ========= =======
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
-
-testo tipas: nameserver
-Level     Message
-========= =======
-Looks OK.
 
 testo tipas: zone
 Level     Message
@@ -36,55 +33,71 @@ Level     Message
 NOTICE    SOA 'refresh' value (10800) is less than the recommended one (14400).
 NOTICE    SOA 'minimum' value (60) is less than the recommended one (300).
 
+testo tipas: nameserver
+Level     Message
+========= =======
+Looks OK.
+
+=======================================================
+
 fortum.lt
+
 testo tipas: dnssec
 Level     Message
 ========= =======
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
-
-testo tipas: nameserver
-Level     Message
-========= =======
-Looks OK.
 
 testo tipas: zone
 Level     Message
 ========= =======
 Looks OK.
 
-kartulengviau.lt
+testo tipas: nameserver
+Level     Message
+========= =======
+Looks OK.
+
+=======================================================
+
+ktu.lt
+
 testo tipas: dnssec
 Level     Message
 ========= =======
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
 
-testo tipas: nameserver
-Level     Message
-========= =======
-ERROR     The following nameservers failed to resolve to an IP address : ns22.cloudlix.com.
-
 testo tipas: zone
 Level     Message
 ========= =======
-NOTICE    SOA 'refresh' value (3600) is less than the recommended one (14400).
-NOTICE    SOA 'retry' value (1800) is less than the recommended one (3600).
+NOTICE    SOA 'refresh' value (7200) is less than the recommended one (14400).
 
-seb.lt
+testo tipas: nameserver
+Level     Message
+========= =======
+Looks OK.
+
+=======================================================
+
+autogidas.lt
+
 testo tipas: dnssec
 Level     Message
 ========= =======
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
 
-testo tipas: nameserver
-Level     Message
-========= =======
-ERROR     The following nameservers failed to resolve to an IP address : ns2.omnitel.net.
-
 testo tipas: zone
 Level     Message
 ========= =======
-WARNING   The MX RRset data is inconsistent between the name servers.
+NOTICE    SOA 'refresh' value (10000) is less than the recommended one (14400).
+NOTICE    SOA 'retry' value (2400) is less than the recommended one (3600).
+
+testo tipas: nameserver
+Level     Message
+========= =======
+Looks OK.
+
+=======================================================
 

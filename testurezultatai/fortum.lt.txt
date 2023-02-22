@@ -1,0 +1,20 @@
+fortum.lt
+
+testo tipas: dnssec
+Level     Message
+========= =======
+NOTICE    There are neither DS nor DNSKEY records for the zone.
+NOTICE    The zone is not signed with DNSSEC.
+
+testo tipas: zone
+Level     Message
+========= =======
+Looks OK.
+
+testo tipas: nameserver
+Level     Message
+========= =======
+Looks OK.
+
+=======================================================
+

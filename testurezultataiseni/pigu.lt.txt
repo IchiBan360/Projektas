@@ -1,0 +1,16 @@
+pigu.lt
+
+testo tipas: dnssec
+Level     Message
+========= =======
+NOTICE    There are neither DS nor DNSKEY records for the zone.
+NOTICE    The zone is not signed with DNSSEC.
+
+testo tipas: zone
+Level     Message
+========= =======
+NOTICE    SOA 'refresh' value (10000) is less than the recommended one (14400).
+NOTICE    SOA 'retry' value (2400) is less than the recommended one (3600).
+
+=======================================================
+
