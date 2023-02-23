@@ -14,20 +14,24 @@ from difflib import Differ
 
 def palyginimas(domain):
     differences = ''
+
     count = 0
-    with open(testDir + domain + '.txt') as file_1, open(testDirOld + domain + '.txt') as file_2:
-        differ = Differ()
-        for line in differ.compare(file_1.readlines(), file_2.readlines()):
-            diff = line
-            if diff.startswith('-'):
-                count = count + 1
-                differences = differences + diff
-    if count != 0:
-        body = (domain + ' testo metu buvo rasta nauju klaidu: \n' + differences)
-        return body
+    if os.path.exists(testDirOld + domain + '.txt'):
+        with open(testDir + domain + '.txt') as file_1, open(testDirOld + domain + '.txt') as file_2:
+            differ = Differ()
+            for line in differ.compare(file_1.readlines(), file_2.readlines()):
+                diff = line
+                if diff.startswith('-'):
+                    count = count + 1
+                    differences = differences + diff
+        if count != 0:
+            body = (domain + ' testo metu buvo rasta nauju klaidu: \n' + differences)
+            return body
+        else:
+            return differences
+            print('nauju klaidu nerasta')
     else:
         return ''
-        print('nauju klaidu nerasta')
     
 # email raporto siuntimo metodas
 # siuncia domenu skenavimo rezultatus visiems nurodytiems adresatams
@@ -64,7 +68,7 @@ def testavimas():
     fd.writelines('Testu tipai: ' + testStr + '\n')
     fd.writelines('\n')
     fd.close()
-
+    
 # domenu testavimas
     
     diff = ''
@@ -92,10 +96,10 @@ def testavimas():
 # sudedam visus domenu testu rezultatus i viena faila
 
     read_files = glob.glob(testDir + '/*.txt')
-    with open (testOut, 'ab') as outfile:
-        for f in read_files:
-            with open(f, 'rb') as infile:
-                outfile.write(infile.read())
+    with open (testOut, 'a') as outfile:
+        for domain in domains:
+            with open (testDir + domain + '.txt') as f:
+                outfile.write(f.read())
 
 # tikrinam, ar buvo rasta nauju klaidu, ir siunciam el. pasta
 

@@ -1,0 +1,28 @@
+going.lt
+
+testo tipas: dnssec
+Level     Message
+========= =======
+ERROR     195.8.218.131 sent a DS record, but 3.130.216.63 did not send a DNSKEY record.
+ERROR     Nameserver ns1.sedoparking.com/3.130.216.63 responded with no DNSKEY record(s).
+ERROR     Nameserver ns1.sedoparking.com/91.195.241.8 responded with no DNSKEY record(s).
+ERROR     Nameserver ns2.sedoparking.com/34.211.188.210 responded with no DNSKEY record(s).
+ERROR     Nameserver ns2.sedoparking.com/91.195.240.8 responded with no DNSKEY record(s).
+ERROR     The child zone is unsigned, but the parent zone has DS record.
+ERROR     Nameserver ns1.sedoparking.com/3.130.216.63 responded with no DNSKEY record(s).
+ERROR     Nameserver ns1.sedoparking.com/91.195.241.8 responded with no DNSKEY record(s).
+ERROR     Nameserver ns2.sedoparking.com/34.211.188.210 responded with no DNSKEY record(s).
+ERROR     Nameserver ns2.sedoparking.com/91.195.240.8 responded with no DNSKEY record(s).
+
+testo tipas: nameserver
+Level     Message
+========= =======
+Looks OK.
+
+testo tipas: zone
+Level     Message
+========= =======
+Looks OK.
+
+=======================================================
+

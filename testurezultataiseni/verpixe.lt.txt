@@ -1,0 +1,27 @@
+verpixe.lt
+
+testo tipas: dnssec
+Level     Message
+========= =======
+WARNING   2001:41d0:1:4a91::1 sent a DNSKEY record, but 195.8.218.131 did not send a DS record.
+ERROR     RRSIG with keytag 4365 and covering type(s) DNSKEY has already expired (expiration is: 1670367450).
+ERROR     RRSIG with keytag 49336 and covering type(s) DNSKEY has already expired (expiration is: 1670367450).
+ERROR     RRSIG with keytag 4365 and covering type(s) SOA has already expired (expiration is: 1670367450).
+ERROR     RRSIG with keytag 4365 and covering type DNSKEY has already expired. Fetched from the nameservers with IP addresses "2001:41d0:1:1991::1;2001:41d0:1:4a91::1;213.251.128.145;213.251.188.145".
+ERROR     RRSIG with keytag 49336 and covering type DNSKEY has already expired. Fetched from the nameservers with IP addresses "2001:41d0:1:1991::1;2001:41d0:1:4a91::1;213.251.128.145;213.251.188.145".
+ERROR     RRSIG with keytag 4365 and covering type SOA has already expired. Fetched from the nameservers with IP addresses "2001:41d0:1:1991::1;2001:41d0:1:4a91::1;213.251.128.145;213.251.188.145".
+ERROR     The signatures (RRSIG) for the NSEC3 record or records cannot be verified. Fetched from the nameservers with IP addresses "2001:41d0:1:1991::1;2001:41d0:1:4a91::1;213.251.128.145;213.251.188.145".
+WARNING   DNSKEY with tag 4365 and using algorithm 8 (RSA/SHA-256) has a size (1024) smaller than the recommended one (2048).
+
+testo tipas: nameserver
+Level     Message
+========= =======
+Looks OK.
+
+testo tipas: zone
+Level     Message
+========= =======
+Looks OK.
+
+=======================================================
+
