@@ -6,15 +6,15 @@ Level     Message
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
 
-testo tipas: zone
-Level     Message
-========= =======
-NOTICE    SOA 'refresh' value (7200) is less than the recommended one (14400).
-
 testo tipas: nameserver
 Level     Message
 ========= =======
 Looks OK.
+
+testo tipas: zone
+Level     Message
+========= =======
+NOTICE    SOA 'refresh' value (7200) is less than the recommended one (14400).
 
 =======================================================
 

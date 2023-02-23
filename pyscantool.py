@@ -8,7 +8,9 @@ import time
 import glob
 from difflib import Differ
 
-
+# patikrina, ar naujam domeno testo faile yra nauju klaidu
+# jei taip, sudeda visas rastas naujas klaidas i bendra body
+# el. pasto siuntimui
 
 def palyginimas(domain):
     differences = ''
@@ -21,7 +23,7 @@ def palyginimas(domain):
                 count = count + 1
                 differences = differences + diff
     if count != 0:
-        body = (domain + ' testo metu buvo rasta nauju klaidu::\n' + differences)
+        body = (domain + ' testo metu buvo rasta nauju klaidu: \n' + differences)
         return body
     else:
         return ''
@@ -43,15 +45,15 @@ def emailSiuntimas(body):
                 attachments=testOut,
         )
 
+# tikrinam, ar egzistuoja raporto failas, jei taip keiciam su atliktu raportu
+
 def testavimas():
     if os.path.exists(testOut):
-        print('testas jau buvo darytas')
         shutil.copyfile(testOut, testOld)
         os.remove(testOut)
 
-#Testavimo budo nuskaitymas is config.ini failo
+# Testavimo budo nuskaitymas is config.ini failo
 
-#    config.read(configFilePath) # skaitom konfiguracinio failo nustatymus
     tests = config['test-cases']['tests'].split(',')
     domains = config['domain-names']['domains'].split(',')
     fd = open(testOut, 'a') # irasom domenu ir testu pavadinimus
@@ -64,10 +66,11 @@ def testavimas():
     fd.close()
 
 # domenu testavimas
+    
     diff = ''
     for domain in domains: # einam per visus nurodytus domenus
         print('Tikrinamas domenas :', domain)
-        if os.path.exists(testDir + domain + '.txt'):
+        if os.path.exists(testDir + domain + '.txt'): # perrasom senus domenu testu duomenis i faila
             shutil.copy(testDir + domain + '.txt', testDirOld)
             os.remove(testDir + domain + '.txt')
         fd = open(testDir + domain + '.txt', 'a')
@@ -85,19 +88,24 @@ def testavimas():
         fd.writelines('\n')
         fd.close()
         diff += palyginimas(domain)
-    print (diff)
     
+# sudedam visus domenu testu rezultatus i viena faila
+
     read_files = glob.glob(testDir + '/*.txt')
-    with open (testOut, 'wb') as outfile:
+    with open (testOut, 'ab') as outfile:
         for f in read_files:
             with open(f, 'rb') as infile:
                 outfile.write(infile.read())
 
-# lyginam nauja ir sena testu faila
-# jei naudojami nauji domenai arba testai
-# failu nelyginam, nes jie taip ar taip bus skirtingi
+# tikrinam, ar buvo rasta nauju klaidu, ir siunciam el. pasta
 
-  #  palyginimas() # lyginam 2 failus ieskant nauju klaidu
+    if diff:
+        emailSiuntimas(diff)
+    else:
+        diff = 'Domenu skenavimo metu nebuvo rasta nauju klaidu'
+        emailSiuntimas(diff)
+
+# kodo pradzia
 
 print('dns scenavimo irankis')
 
@@ -105,8 +113,6 @@ cmd = 'zonemaster-cli' # zonemaster-cli komanda
 
 # testo failu direktorijos
 
-#config = configparser.ConfigParser()
-#config.read(configFilePath) # skaitom konfiguracinio failo nustatymus
 testOut = './testresult.txt'
 configFilePath = './config.ini'
 testOld = './testresultold.txt'
@@ -118,10 +124,8 @@ config.read(configFilePath) # skaitom konfiguracinio failo nustatymus
 
 sleepTime = config['sleep-time']['sleep']
 
-
-
-#while True:
-testavimas()
-print('testavimus atlikau, laukiu 60 sekundziu')
-    #time.sleep(int(sleepTime) * 3600)
+while True: # paprastas loop kartoti testams kas kazkiek laiko
+    testavimas()
+    print('testavimus atlikau, laukiu ' + sleepTime + ' valandu')
+    time.sleep(int(sleepTime) * 3600)
 

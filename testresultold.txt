@@ -1,3 +1,7 @@
+Testuojami domenai: pigu.lt domreg.lt fortum.lt ktu.lt autogidas.lt
+
+Testu tipai: dnssec nameserver
+
 pigu.lt
 
 testo tipas: dnssec
@@ -6,11 +10,10 @@ Level     Message
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
 
-testo tipas: zone
+testo tipas: nameserver
 Level     Message
 ========= =======
-NOTICE    SOA 'refresh' value (10000) is less than the recommended one (14400).
-NOTICE    SOA 'retry' value (2400) is less than the recommended one (3600).
+Looks OK.
 
 =======================================================
 
@@ -22,11 +25,10 @@ Level     Message
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
 
-testo tipas: zone
+testo tipas: nameserver
 Level     Message
 ========= =======
-NOTICE    SOA 'refresh' value (10800) is less than the recommended one (14400).
-NOTICE    SOA 'minimum' value (60) is less than the recommended one (300).
+Looks OK.
 
 =======================================================
 
@@ -38,7 +40,7 @@ Level     Message
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
 
-testo tipas: zone
+testo tipas: nameserver
 Level     Message
 ========= =======
 Looks OK.
@@ -53,10 +55,10 @@ Level     Message
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
 
-testo tipas: zone
+testo tipas: nameserver
 Level     Message
 ========= =======
-NOTICE    SOA 'refresh' value (7200) is less than the recommended one (14400).
+Looks OK.
 
 =======================================================
 
@@ -68,11 +70,10 @@ Level     Message
 NOTICE    There are neither DS nor DNSKEY records for the zone.
 NOTICE    The zone is not signed with DNSSEC.
 
-testo tipas: zone
+testo tipas: nameserver
 Level     Message
 ========= =======
-NOTICE    SOA 'refresh' value (10000) is less than the recommended one (14400).
-NOTICE    SOA 'retry' value (2400) is less than the recommended one (3600).
+Looks OK.
 
 =======================================================
 
