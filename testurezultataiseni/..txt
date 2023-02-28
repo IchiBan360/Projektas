@@ -1,0 +1,6 @@
+.
+
+testo tipas: nameserver
+Level     Message
+========= =======
+NOTICE    Nameserver b.root-servers.net/199.9.14.201 allow zone transfer using AXFR.

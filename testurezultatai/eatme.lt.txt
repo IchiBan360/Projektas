@@ -56,7 +56,3 @@ WARNING   Erroneous response from nameserver stevie.ns.cloudflare.com/2a06:98c1:
 testo tipas: zone
 Level     Message
 ========= =======
-Looks OK.
-
-=======================================================
-

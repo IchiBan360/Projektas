@@ -7,6 +7,7 @@ import yagmail
 import time
 import glob
 from difflib import Differ
+from multiprocessing import Pool
 
 # patikrina, ar naujam domeno testo faile yra nauju klaidu
 # jei taip, sudeda visas rastas naujas klaidas i bendra body
@@ -51,63 +52,53 @@ def emailSiuntimas(body):
 
 # tikrinam, ar egzistuoja raporto failas, jei taip keiciam su atliktu raportu
 
-def testavimas():
+def failoKurimas():
     if os.path.exists(testOut):
         shutil.copyfile(testOut, testOld)
         os.remove(testOut)
 
-# Testavimo budo nuskaitymas is config.ini failo
 
-    tests = config['test-cases']['tests'].split(',')
-    domains = config['domain-names']['domains'].split(',')
-    fd = open(testOut, 'a') # irasom domenu ir testu pavadinimus
-    domainStr = ' '.join(map(str,domains))
-    testStr = ' '.join(map(str,tests))
-    fd.writelines('Testuojami domenai: ' + domainStr + '\n')
+# domenu testavimas
+
+def testavimas(domain):
+    print('Tikrinamas domenas :', domain)
+    if os.path.exists(testDir + domain + '.txt'): # perrasom senus domenu testu duomenis i faila
+        shutil.copy(testDir + domain + '.txt', testDirOld)
+        os.remove(testDir + domain + '.txt')
+    fd = open(testDir + domain + '.txt', 'a')
+    fd.writelines(domain + '\n')
     fd.writelines('\n')
-    fd.writelines('Testu tipai: ' + testStr + '\n')
+    fd.close()
+    for test in tests: # vykdom visus nurodytus testus
+        fd = open(testDir + domain + '.txt', 'a')
+        fd.writelines('testo tipas: ' + test + '\n')
+        fd.close()
+        fd = open(testDir + domain + '.txt', 'a')
+        subprocess.run([cmd, domain, '--test', test, '--no-time', '--level', 'notice'], stdout=fd) # zonemaster-cli funkcija
+        fd.writelines('\n')
+    fd.writelines('=======================================================\n')
     fd.writelines('\n')
     fd.close()
     
-# domenu testavimas
-    
-    diff = ''
-    for domain in domains: # einam per visus nurodytus domenus
-        print('Tikrinamas domenas :', domain)
-        if os.path.exists(testDir + domain + '.txt'): # perrasom senus domenu testu duomenis i faila
-            shutil.copy(testDir + domain + '.txt', testDirOld)
-            os.remove(testDir + domain + '.txt')
-        fd = open(testDir + domain + '.txt', 'a')
-        fd.writelines(domain + '\n')
-        fd.writelines('\n')
-        fd.close()
-        for test in tests: # vykdom visus nurodytus testus
-            fd = open(testDir + domain + '.txt', 'a')
-            fd.writelines('testo tipas: ' + test + '\n')
-            fd.close()
-            fd = open(testDir + domain + '.txt', 'a')
-            subprocess.run([cmd, domain, '--test', test, '--no-time'], stdout=fd) # zonemaster-cli funkcija
-            fd.writelines('\n')
-        fd.writelines('=======================================================\n')
-        fd.writelines('\n')
-        fd.close()
-        diff += palyginimas(domain)
-    
 # sudedam visus domenu testu rezultatus i viena faila
 
+def raportoFailas():
     read_files = glob.glob(testDir + '/*.txt')
     with open (testOut, 'a') as outfile:
         for domain in domains:
-            with open (testDir + domain + '.txt') as f:
-                outfile.write(f.read())
+            with open (testDir + domain + '.txt') as infile:
+                outfile.write(infile.read())
 
 # tikrinam, ar buvo rasta nauju klaidu, ir siunciam el. pasta
 
+def skirtumuLyginimas(diff):
     if diff:
-        emailSiuntimas(diff)
+    #    emailSiuntimas(diff)
+        print('yra nauju klaidu' + diff)
     else:
         diff = 'Domenu skenavimo metu nebuvo rasta nauju klaidu'
-        emailSiuntimas(diff)
+     #   emailSiuntimas(diff)
+        print(diff)
 
 # kodo pradzia
 
@@ -128,8 +119,31 @@ config.read(configFilePath) # skaitom konfiguracinio failo nustatymus
 
 sleepTime = config['sleep-time']['sleep']
 
-while True: # paprastas loop kartoti testams kas kazkiek laiko
-    testavimas()
-    print('testavimus atlikau, laukiu ' + sleepTime + ' valandu')
-    time.sleep(int(sleepTime) * 3600)
+if os.path.exists(testOut):
+    shutil.copyfile(testOut, testOld)
+    os.remove(testOut)
 
+# Testavimo budo nuskaitymas is config.ini failo
+
+tests = config['test-cases']['tests'].split(',')
+domains = config['domain-names']['domains'].split(',')
+fd = open(testOut, 'a') # irasom domenu ir testu pavadinimus
+domainStr = ' '.join(map(str,domains))
+testStr = ' '.join(map(str,tests))
+fd.writelines('Testuojami domenai: ' + domainStr + '\n')
+fd.writelines('\n')
+fd.writelines('Testu tipai: ' + testStr + '\n')
+fd.writelines('\n')
+fd.close()
+
+while True: # paprastas loop kartoti testams kas kazkiek laiko
+    with Pool(processes=len(domains)) as pool: # parallel testu vykdymas
+        pool.map(testavimas, domains) # Pool kiekis priklauso nuo domenu kiekio
+    raportoFailas()
+    diff=''
+    for domain in domains:
+        diff += palyginimas(domain)
+    print (diff)
+    skirtumuLyginimas(diff)
+   # print('testavimus atlikau, laukiu ' + sleepTime + ' valandu')
+   # time.sleep(int(sleepTime) * 30)
