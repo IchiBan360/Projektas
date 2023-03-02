@@ -1,3 +1,5 @@
+troxus.lt
+
 testo tipas: nameserver
 Level     Message
 ========= =======
@@ -6,7 +8,8 @@ Looks OK.
 testo tipas: zone
 Level     Message
 ========= =======
-Looks OK.
+NOTICE    SOA 'refresh' value (10800) is less than the recommended one (14400).
+NOTICE    The child zone has no mail target (no MX).
 
 =======================================================
 

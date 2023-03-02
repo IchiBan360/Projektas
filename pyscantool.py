@@ -6,7 +6,9 @@ import sys
 import yagmail
 import time
 import glob
+import json
 from difflib import Differ
+from deepdiff import DeepDiff
 from multiprocessing import Pool
 
 # patikrina, ar naujam domeno testo faile yra nauju klaidu
@@ -61,6 +63,7 @@ def failoKurimas():
 # domenu testavimas
 
 def testavimas(domain):
+
     print('Tikrinamas domenas :', domain)
     if os.path.exists(testDir + domain + '.txt'): # perrasom senus domenu testu duomenis i faila
         shutil.copy(testDir + domain + '.txt', testDirOld)
@@ -79,7 +82,49 @@ def testavimas(domain):
     fd.writelines('=======================================================\n')
     fd.writelines('\n')
     fd.close()
+
+def testavimasJson(domain):
+
+    print('Tikrinamas domenas :', domain)
+    if os.path.exists(testDir + domain + '.json'): # perrasom senus domenu testu duomenis i faila
+        shutil.copy(testDir + domain + '.json', testDirOld)
+        os.remove(testDir + domain + '.json')
+    fd = open(testDir + domain + '.json', 'a')
+    command = "{} {} --no-time --level notice --json".format(cmd, domain)
+    for test in tests: # vykdom visus nurodytus testus
+        command += " --test " + "{}".format(test)
+    subprocess.run(command, stdout=fd, shell=True) # zonemaster-cli funkcija
+    fd.close()
+
+
+def jsonTikrinimas(domain):
     
+    with open(testDir + domain + '.json') as json_file:
+        data = json_file.read()
+        json_content = json.loads(data)
+        print(domain + ' domeno rastos klaidos')
+        #print(json.dumps(json_content, indent=4))
+        #for level in json_content:
+        #   print(level['level'], level['module'], level['tag'], level['testcase'])
+
+def jsonPalyginimas():
+    result = ''
+    for domain in domains:
+        if os.path.exists(testDirOld + domain + '.json'):
+            with open(testDir + domain + '.json') as file_1, open(testDirOld + domain + '.json') as file_2:
+                data1 = file_1.read()
+                json_content_1 = json.loads(data1)
+                data2 = file_2.read()
+                json_content_2 = json.loads(data2)
+                res = (str(DeepDiff(json_content_1, json_content_2, exclude_regex_paths="timestamp")))
+                if res == '{}': #TODO pasidaryk normalu lyginima pagaliau
+                    print('jokiu pakeitimu')
+                else:
+                    result += res 
+    return(result)
+
+
+
 # sudedam visus domenu testu rezultatus i viena faila
 
 def raportoFailas():
@@ -109,8 +154,10 @@ cmd = 'zonemaster-cli' # zonemaster-cli komanda
 # testo failu direktorijos
 
 testOut = './testresult.txt'
+testOutJson = './testresultJson.txt'
 configFilePath = './config.ini'
 testOld = './testresultold.txt'
+testOldJson = './testresultoldJson.txt'
 testDir = './testurezultatai/'
 testDirOld = './testurezultataiseni/'
 
@@ -127,6 +174,7 @@ if os.path.exists(testOut):
 
 tests = config['test-cases']['tests'].split(',')
 domains = config['domain-names']['domains'].split(',')
+poolCount = config['pool-count']['poolCount']
 fd = open(testOut, 'a') # irasom domenu ir testu pavadinimus
 domainStr = ' '.join(map(str,domains))
 testStr = ' '.join(map(str,tests))
@@ -137,13 +185,19 @@ fd.writelines('\n')
 fd.close()
 
 while True: # paprastas loop kartoti testams kas kazkiek laiko
-    with Pool(processes=len(domains)) as pool: # parallel testu vykdymas
-        pool.map(testavimas, domains) # Pool kiekis priklauso nuo domenu kiekio
-    raportoFailas()
-    diff=''
-    for domain in domains:
-        diff += palyginimas(domain)
-    print (diff)
-    skirtumuLyginimas(diff)
-   # print('testavimus atlikau, laukiu ' + sleepTime + ' valandu')
-   # time.sleep(int(sleepTime) * 30)
+    config = configparser.ConfigParser()
+    config.read(configFilePath) # skaitom konfiguracinio failo nustatymus
+    poolCount = config['pool-count']['poolCount']
+    start_time = time.time()
+    with Pool(processes=int(poolCount)) as pool: # parallel testu vykdymas
+        pool.map(testavimasJson, domains) # Pool kiekis priklauso nuo domenu kiekio
+    print('uztruko %s sekundes' % (time.time() - start_time))
+    print(jsonPalyginimas())
+    #raportoFailas()
+    #diff=''
+    #for domain in domains:
+    #    diff += palyginimas(domain)
+    #print (diff)
+    #skirtumuLyginimas(diff)
+    print('testavimus atlikau, laukiu ' + sleepTime + ' valandas/valandu')
+    time.sleep(int(sleepTime) * 5)

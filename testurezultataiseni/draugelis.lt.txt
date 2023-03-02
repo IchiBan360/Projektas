@@ -1,5 +1,3 @@
-draugelis.lt
-
 testo tipas: nameserver
 Level     Message
 ========= =======

@@ -1,3 +1,5 @@
+en.lt
+
 testo tipas: nameserver
 Level     Message
 ========= =======
@@ -6,7 +8,7 @@ Looks OK.
 testo tipas: zone
 Level     Message
 ========= =======
-Looks OK.
+NOTICE    SOA 'refresh' value (3600) is less than the recommended one (14400).
 
 =======================================================
 

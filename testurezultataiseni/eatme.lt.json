@@ -1,0 +1,1 @@
+[{"args":{"child":"13.248.158.159","parent":"195.8.218.131"},"level":"NOTICE","module":"DNSSEC","tag":"NEITHER_DNSKEY_NOR_DS","testcase":"DNSSEC07","timestamp":0.157426834106445},{"args":{"zone":"eatme.lt"},"level":"NOTICE","module":"DNSSEC","tag":"NOT_SIGNED","testcase":"UNSPECIFIED","timestamp":0.157924890518188}]

@@ -1,0 +1,25 @@
+ybs.lt
+
+testo tipas: nameserver
+Level     Message
+========= =======
+WARNING   Erroneous response from nameserver ns1.domenai.lt/193.46.84.2.
+WARNING   Erroneous response from nameserver ns2.domenai.lt/5.199.174.200.
+WARNING   Erroneous response from nameserver ns3.domenai.lt/193.46.84.4.
+WARNING   Nameserver ns1.domenai.lt/193.46.84.2 answered A query with an unexpected rcode (REFUSED).
+WARNING   Nameserver ns2.domenai.lt/5.199.174.200 answered A query with an unexpected rcode (REFUSED).
+WARNING   Nameserver ns3.domenai.lt/193.46.84.4 answered A query with an unexpected rcode (REFUSED).
+WARNING   Erroneous response from nameserver ns1.domenai.lt/193.46.84.2.
+WARNING   Erroneous response from nameserver ns2.domenai.lt/5.199.174.200.
+WARNING   Erroneous response from nameserver ns3.domenai.lt/193.46.84.4.
+WARNING   Erroneous response from nameserver ns1.domenai.lt/193.46.84.2.
+WARNING   Erroneous response from nameserver ns2.domenai.lt/5.199.174.200.
+WARNING   Erroneous response from nameserver ns3.domenai.lt/193.46.84.4.
+
+testo tipas: zone
+Level     Message
+========= =======
+Looks OK.
+
+=======================================================
+
