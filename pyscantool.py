@@ -107,21 +107,15 @@ def jsonTikrinimas(domain):
         #for level in json_content:
         #   print(level['level'], level['module'], level['tag'], level['testcase'])
 
-def jsonPalyginimas():
-    result = ''
-    for domain in domains:
-        if os.path.exists(testDirOld + domain + '.json'):
-            with open(testDir + domain + '.json') as file_1, open(testDirOld + domain + '.json') as file_2:
-                data1 = file_1.read()
-                json_content_1 = json.loads(data1)
-                data2 = file_2.read()
-                json_content_2 = json.loads(data2)
-                res = (str(DeepDiff(json_content_1, json_content_2, exclude_regex_paths="timestamp")))
-                if res == '{}': #TODO pasidaryk normalu lyginima pagaliau
-                    print('jokiu pakeitimu')
-                else:
-                    result += res 
-    return(result)
+def jsonPalyginimas(domain):
+    if os.path.exists(testDirOld + domain + '.json'):
+        with open(testDir + domain + '.json') as file_1, open(testDirOld + domain + '.json') as file_2:
+            data1 = file_1.read()
+            json_content_1 = json.loads(data1)
+            data2 = file_2.read()
+            json_content_2 = json.loads(data2)
+            res = DeepDiff(json_content_2, json_content_1, ignore_string_type_changes = True, exclude_regex_paths="timestamp").to_json()
+    return(res)
 
 
 
@@ -133,6 +127,18 @@ def raportoFailas():
         for domain in domains:
             with open (testDir + domain + '.txt') as infile:
                 outfile.write(infile.read())
+
+def raportoFailasJson():
+    read_files = glob.glob(testDir + '/*.json')
+    errorList = {}
+    for domain in domains:
+        with open(testDir + domain + '.json', 'r') as infile:
+            jsondiff = json.load(infile)
+            errorList[domain +'_error'] = jsondiff
+    
+    with open(testOutJson, 'a') as outfile:
+        json.dump(errorList, outfile, indent=4)
+
 
 # tikrinam, ar buvo rasta nauju klaidu, ir siunciam el. pasta
 
@@ -154,7 +160,7 @@ cmd = 'zonemaster-cli' # zonemaster-cli komanda
 # testo failu direktorijos
 
 testOut = './testresult.txt'
-testOutJson = './testresultJson.txt'
+testOutJson = './testresultJson.json'
 configFilePath = './config.ini'
 testOld = './testresultold.txt'
 testOldJson = './testresultoldJson.txt'
@@ -192,8 +198,22 @@ while True: # paprastas loop kartoti testams kas kazkiek laiko
     with Pool(processes=int(poolCount)) as pool: # parallel testu vykdymas
         pool.map(testavimasJson, domains) # Pool kiekis priklauso nuo domenu kiekio
     print('uztruko %s sekundes' % (time.time() - start_time))
-    print(jsonPalyginimas())
-    #raportoFailas()
+    fd = open(testOutJson, 'w')
+    errorlist = {}
+    for domain in domains:
+        jsonResult = jsonPalyginimas(domain)
+        jsondiff = json.loads(jsonResult)
+        #print(json.dumps(jsondiff, indent=4))
+        if 'iterable_item_added' in jsondiff:
+            errorlist[domain + '_error'] = jsondiff['iterable_item_added']
+            
+    fd.close()
+    error = json.dumps(errorlist, indent=4)
+    print(error)
+    
+    
+
+    raportoFailasJson()
     #diff=''
     #for domain in domains:
     #    diff += palyginimas(domain)

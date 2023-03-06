@@ -1,4 +1,4 @@
 Testuojami domenai: andarsa.lt ybs.lt troxus.lt en.lt going.lt verpixe.lt yn.lt merinox.lt symlink.lt made.lt kursiutakas.lt chnadazai.lt draugelis.lt eatme.lt
 
-Testu tipai: zone dnssec
+Testu tipai: zone dnssec nameserver
 
