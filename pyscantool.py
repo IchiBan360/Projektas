@@ -208,7 +208,7 @@ if reportFormat == 'json': # Raporto kurimas JSON formatu
         
         emailSiuntimas(body,files) # Siunciam email
         print('testavimus atlikau, laukiu ' + sleepTime + ' valandas/valandu')
-        time.sleep(int(sleepTime) * 5) # sustabdom kodo vykdyma nurodytam laikotarpiui
+        time.sleep(int(sleepTime) * 3600) # sustabdom kodo vykdyma nurodytam laikotarpiui
 
 elif reportFormat == 'txt': # Raporto kurimas TXT formatu
 
