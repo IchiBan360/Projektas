@@ -1,1 +1,0 @@
-[{"args":{"child":"195.12.188.34","parent":"195.8.218.131"},"level":"NOTICE","module":"DNSSEC","tag":"NEITHER_DNSKEY_NOR_DS","testcase":"DNSSEC07","timestamp":0.0475368499755859},{"args":{"zone":"draugelis.lt"},"level":"NOTICE","module":"DNSSEC","tag":"NOT_SIGNED","testcase":"UNSPECIFIED","timestamp":0.0478777885437012}]
