@@ -3,11 +3,11 @@
 
 Pradėti naudotis įrankiu prireiks 2 bibliotekų:
 
-Yagmail bibliotekos, kuri yra skirta palengvinti darbą su el. pašto siuntimu.
+Yagmail bibliotekos, kuri yra skirta palengvinti darbą su el. pašto siuntimu:
 
 pip3 install yagmail[all]
 
-ir DeepDiff bibliotekos, kuri yra skirta palengvinti darbą lyginant .json formato failus/
+ir DeepDiff bibliotekos, kuri yra skirta palengvinti darbą lyginant .json formato failus:
 
 pip install deepdiff
 
