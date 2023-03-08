@@ -1,0 +1,1468 @@
+{
+    "andarsa.lt_error": [
+        {
+            "args": {
+                "refresh": 3600,
+                "required_refresh": 14400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "REFRESH_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE02",
+            "timestamp": 1.15373706817627
+        },
+        {
+            "args": {
+                "required_retry": 3600,
+                "retry": 900
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "RETRY_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE04",
+            "timestamp": 1.15465784072876
+        },
+        {
+            "args": {
+                "lowest_minimum": 300,
+                "minimum": 60
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "SOA_DEFAULT_TTL_MAXIMUM_VALUE_LOWER",
+            "testcase": "ZONE06",
+            "timestamp": 1.15556788444519
+        },
+        {
+            "args": {
+                "child": "92.62.130.14",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.0467631816864014
+        },
+        {
+            "args": {
+                "zone": "andarsa.lt"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NOT_SIGNED",
+            "testcase": "UNSPECIFIED",
+            "timestamp": 0.046983003616333
+        }
+    ],
+    "ybs.lt_error": [
+        {
+            "args": {
+                "ns": "ns1.domenai.lt/193.46.84.2"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC05",
+            "timestamp": 0.611034870147705
+        },
+        {
+            "args": {
+                "ns": "ns2.domenai.lt/5.199.174.200"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC05",
+            "timestamp": 0.64034104347229
+        },
+        {
+            "args": {
+                "ns": "ns3.domenai.lt/193.46.84.4"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC05",
+            "timestamp": 0.642616987228394
+        },
+        {
+            "args": {
+                "ns": "ns1.domenai.lt/193.46.84.2"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC14",
+            "timestamp": 0.719738960266113
+        },
+        {
+            "args": {
+                "ns": "ns2.domenai.lt/5.199.174.200"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC14",
+            "timestamp": 0.72012186050415
+        },
+        {
+            "args": {
+                "ns": "ns3.domenai.lt/193.46.84.4"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC14",
+            "timestamp": 0.720480918884277
+        },
+        {
+            "args": {
+                "ns": "ns1.domenai.lt/193.46.84.2"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 0.147133111953735
+        },
+        {
+            "args": {
+                "ns": "ns2.domenai.lt/5.199.174.200"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 0.178034067153931
+        },
+        {
+            "args": {
+                "ns": "ns3.domenai.lt/193.46.84.4"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 0.18022608757019
+        },
+        {
+            "args": {
+                "ns": "ns1.domenai.lt/193.46.84.2",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 0.252955913543701
+        },
+        {
+            "args": {
+                "ns": "ns2.domenai.lt/5.199.174.200",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 0.28225302696228
+        },
+        {
+            "args": {
+                "ns": "ns3.domenai.lt/193.46.84.4",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 0.283695936203003
+        },
+        {
+            "args": {
+                "ns": "ns1.domenai.lt/193.46.84.2"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 0.426594018936157
+        },
+        {
+            "args": {
+                "ns": "ns2.domenai.lt/5.199.174.200"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 0.456547975540161
+        },
+        {
+            "args": {
+                "ns": "ns3.domenai.lt/193.46.84.4"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 0.461620092391968
+        },
+        {
+            "args": {
+                "ns": "ns1.domenai.lt/193.46.84.2"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 0.463006973266602
+        },
+        {
+            "args": {
+                "ns": "ns2.domenai.lt/5.199.174.200"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 0.463576078414917
+        },
+        {
+            "args": {
+                "ns": "ns3.domenai.lt/193.46.84.4"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 0.46412992477417
+        }
+    ],
+    "troxus.lt_error": [
+        {
+            "args": {
+                "refresh": 10800,
+                "required_refresh": 14400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "REFRESH_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE02",
+            "timestamp": 1.92965888977051
+        },
+        {
+            "args": {},
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "Z09_MISSING_MAIL_TARGET",
+            "testcase": "ZONE09",
+            "timestamp": 2.17913484573364
+        },
+        {
+            "args": {
+                "child": "217.146.66.65",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.1787428855896
+        },
+        {
+            "args": {
+                "zone": "troxus.lt"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NOT_SIGNED",
+            "testcase": "UNSPECIFIED",
+            "timestamp": 0.179046869277954
+        }
+    ],
+    "en.lt_error": [
+        {
+            "args": {
+                "refresh": 3600,
+                "required_refresh": 14400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "REFRESH_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE02",
+            "timestamp": 1.48160219192505
+        },
+        {
+            "args": {
+                "child": "188.165.221.108",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.159698009490967
+        },
+        {
+            "args": {
+                "zone": "en.lt"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NOT_SIGNED",
+            "testcase": "UNSPECIFIED",
+            "timestamp": 0.160172939300537
+        }
+    ],
+    "going.lt_error": [
+        {
+            "args": {
+                "child": "3.130.216.63",
+                "parent": "195.8.218.131"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "DS_BUT_NOT_DNSKEY",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.236775159835815
+        },
+        {
+            "args": {
+                "ns": "ns1.sedoparking.com/3.130.216.63"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC05",
+            "timestamp": 1.40118098258972
+        },
+        {
+            "args": {
+                "ns": "ns1.sedoparking.com/91.195.241.8"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC05",
+            "timestamp": 1.40137815475464
+        },
+        {
+            "args": {
+                "ns": "ns2.sedoparking.com/34.211.188.210"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC05",
+            "timestamp": 1.40156507492065
+        },
+        {
+            "args": {
+                "ns": "ns2.sedoparking.com/91.195.240.8"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC05",
+            "timestamp": 1.40175199508667
+        },
+        {
+            "args": {},
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "DS11_DS_BUT_UNSIGNED_ZONE",
+            "testcase": "DNSSEC11",
+            "timestamp": 1.81230807304382
+        },
+        {
+            "args": {
+                "ns": "ns1.sedoparking.com/3.130.216.63"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC14",
+            "timestamp": 2.4965980052948
+        },
+        {
+            "args": {
+                "ns": "ns1.sedoparking.com/91.195.241.8"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC14",
+            "timestamp": 2.4972231388092
+        },
+        {
+            "args": {
+                "ns": "ns2.sedoparking.com/34.211.188.210"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC14",
+            "timestamp": 2.49777007102966
+        },
+        {
+            "args": {
+                "ns": "ns2.sedoparking.com/91.195.240.8"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "NO_RESPONSE_DNSKEY",
+            "testcase": "DNSSEC14",
+            "timestamp": 2.49836897850037
+        }
+    ],
+    "verpixe.lt_error": [
+        {
+            "args": {
+                "child": "2001:41d0:1:4a91::1",
+                "parent": "195.8.218.131"
+            },
+            "level": "WARNING",
+            "module": "DNSSEC",
+            "tag": "DNSKEY_BUT_NOT_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.093163013458252
+        },
+        {
+            "args": {
+                "expiration": 1670367450,
+                "keytag": 4365,
+                "types": "DNSKEY"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "RRSIG_EXPIRED",
+            "testcase": "DNSSEC04",
+            "timestamp": 5.79437899589539
+        },
+        {
+            "args": {
+                "expiration": 1670367450,
+                "keytag": 49336,
+                "types": "DNSKEY"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "RRSIG_EXPIRED",
+            "testcase": "DNSSEC04",
+            "timestamp": 5.79498696327209
+        },
+        {
+            "args": {
+                "expiration": 1670367450,
+                "keytag": 4365,
+                "types": "SOA"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "RRSIG_EXPIRED",
+            "testcase": "DNSSEC04",
+            "timestamp": 5.7955060005188
+        },
+        {
+            "args": {
+                "keytag": "49336",
+                "ns_ip_list": "2001:41d0:1:1991::1;2001:41d0:1:4a91::1;213.251.128.145;213.251.188.145"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "DS08_DNSKEY_RRSIG_EXPIRED",
+            "testcase": "DNSSEC08",
+            "timestamp": 5.96339893341064
+        },
+        {
+            "args": {
+                "keytag": "4365",
+                "ns_ip_list": "2001:41d0:1:1991::1;2001:41d0:1:4a91::1;213.251.128.145;213.251.188.145"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "DS08_DNSKEY_RRSIG_EXPIRED",
+            "testcase": "DNSSEC08",
+            "timestamp": 5.96352505683899
+        },
+        {
+            "args": {
+                "keytag": "4365",
+                "ns_ip_list": "2001:41d0:1:1991::1;2001:41d0:1:4a91::1;213.251.128.145;213.251.188.145"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "DS09_SOA_RRSIG_EXPIRED",
+            "testcase": "DNSSEC09",
+            "timestamp": 6.08848595619202
+        },
+        {
+            "args": {
+                "ns_ip_list": "2001:41d0:1:1991::1;2001:41d0:1:4a91::1;213.251.128.145;213.251.188.145"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "DS10_NSEC3_RRSIG_VERIFY_ERROR",
+            "testcase": "DNSSEC10",
+            "timestamp": 11.2798609733582
+        },
+        {
+            "args": {
+                "algo_descr": "RSA/SHA-256",
+                "algo_num": 8,
+                "keysize": 1024,
+                "keysizemax": 4096,
+                "keysizemin": 512,
+                "keysizerec": 2048,
+                "keytag": 4365
+            },
+            "level": "WARNING",
+            "module": "DNSSEC",
+            "tag": "DNSKEY_SMALLER_THAN_REC",
+            "testcase": "DNSSEC14",
+            "timestamp": 11.4609570503235
+        }
+    ],
+    "yn.lt_error": [
+        {
+            "args": {
+                "child": "54.36.158.42",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.0976688861846924
+        },
+        {
+            "args": {
+                "zone": "yn.lt"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NOT_SIGNED",
+            "testcase": "UNSPECIFIED",
+            "timestamp": 0.0982298851013184
+        },
+        {
+            "args": {
+                "ns": "ns1.xtgem.com/54.36.158.42"
+            },
+            "level": "ERROR",
+            "module": "NAMESERVER",
+            "tag": "IS_A_RECURSOR",
+            "testcase": "NAMESERVER01",
+            "timestamp": 0.20180606842041
+        },
+        {
+            "args": {
+                "ns": "ns2.xtgem.com/51.79.140.240"
+            },
+            "level": "ERROR",
+            "module": "NAMESERVER",
+            "tag": "IS_A_RECURSOR",
+            "testcase": "NAMESERVER01",
+            "timestamp": 1.01773405075073
+        }
+    ],
+    "merinox.lt_error": [
+        {
+            "args": {},
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "Z09_MISSING_MAIL_TARGET",
+            "testcase": "ZONE09",
+            "timestamp": 1.98221707344055
+        },
+        {
+            "args": {
+                "algo_descr": "RSA/SHA-256",
+                "algo_num": 8,
+                "keysize": 1024,
+                "keysizemax": 4096,
+                "keysizemin": 512,
+                "keysizerec": 2048,
+                "keytag": 26055
+            },
+            "level": "WARNING",
+            "module": "DNSSEC",
+            "tag": "DNSKEY_SMALLER_THAN_REC",
+            "testcase": "DNSSEC14",
+            "timestamp": 1.95884013175964
+        },
+        {
+            "args": {
+                "algo_descr": "RSA/SHA-256",
+                "algo_num": 8,
+                "keysize": 1280,
+                "keysizemax": 4096,
+                "keysizemin": 512,
+                "keysizerec": 2048,
+                "keytag": 30680
+            },
+            "level": "WARNING",
+            "module": "DNSSEC",
+            "tag": "DNSKEY_SMALLER_THAN_REC",
+            "testcase": "DNSSEC14",
+            "timestamp": 1.95911693572998
+        },
+        {
+            "args": {
+                "keytag": "30680",
+                "ns_ip_list": "162.159.24.4;162.159.25.4;162.159.26.4;162.159.27.4;2400:cb00:2049:1::a29f:1804;2400:cb00:2049:1::a29f:1904;2400:cb00:2049:1::a29f:1a04;2400:cb00:2049:1::a29f:1b04"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "DS16_CDS_NOT_SIGNED_BY_CDS",
+            "testcase": "DNSSEC16",
+            "timestamp": 2.45014309883118
+        },
+        {
+            "args": {
+                "keytag": "30680",
+                "ns_ip_list": "162.159.24.4;162.159.25.4;162.159.26.4;162.159.27.4;2400:cb00:2049:1::a29f:1804;2400:cb00:2049:1::a29f:1904;2400:cb00:2049:1::a29f:1a04;2400:cb00:2049:1::a29f:1b04"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY",
+            "testcase": "DNSSEC17",
+            "timestamp": 2.46862006187439
+        },
+        {
+            "args": {
+                "ns_ip_list": "162.159.24.4;162.159.25.4;162.159.26.4;162.159.27.4;2400:cb00:2049:1::a29f:1804;2400:cb00:2049:1::a29f:1904;2400:cb00:2049:1::a29f:1a04;2400:cb00:2049:1::a29f:1b04"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "DS18_NO_MATCH_CDS_RRSIG_DS",
+            "testcase": "DNSSEC18",
+            "timestamp": 2.48467111587524
+        },
+        {
+            "args": {
+                "ns_ip_list": "162.159.24.4;162.159.25.4;162.159.26.4;162.159.27.4;2400:cb00:2049:1::a29f:1804;2400:cb00:2049:1::a29f:1904;2400:cb00:2049:1::a29f:1a04;2400:cb00:2049:1::a29f:1b04"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "DS18_NO_MATCH_CDNSKEY_RRSIG_DS",
+            "testcase": "DNSSEC18",
+            "timestamp": 2.48473906517029
+        }
+    ],
+    "symlink.lt_error": [
+        {
+            "args": {},
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "Z09_MISSING_MAIL_TARGET",
+            "testcase": "ZONE09",
+            "timestamp": 1.26438808441162
+        },
+        {
+            "args": {
+                "keytag": "63088",
+                "ns_ip_list": "212.71.255.217;2a01:6f0:ffff:1::1;2a01:7e00::f03c:92ff:fe44:cc8;2a02:7b40:50d1:e466::1;31.220.42.129;80.209.228.102"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "DS02_NO_MATCH_DS_DNSKEY",
+            "testcase": "DNSSEC02",
+            "timestamp": 0.83011794090271
+        },
+        {
+            "args": {
+                "ns": "sky.nullroute.lt/2a01:6f0:ffff:1::1"
+            },
+            "level": "NOTICE",
+            "module": "NAMESERVER",
+            "tag": "AXFR_AVAILABLE",
+            "testcase": "NAMESERVER03",
+            "timestamp": 0.853085041046143
+        },
+        {
+            "args": {
+                "ns": "sky.nullroute.lt/31.220.42.129"
+            },
+            "level": "NOTICE",
+            "module": "NAMESERVER",
+            "tag": "AXFR_AVAILABLE",
+            "testcase": "NAMESERVER03",
+            "timestamp": 0.919734954833984
+        },
+        {
+            "args": {
+                "ns": "star.nullroute.lt/2a02:7b40:50d1:e466::1"
+            },
+            "level": "NOTICE",
+            "module": "NAMESERVER",
+            "tag": "AXFR_AVAILABLE",
+            "testcase": "NAMESERVER03",
+            "timestamp": 0.97943902015686
+        },
+        {
+            "args": {
+                "ns": "star.nullroute.lt/80.209.228.102"
+            },
+            "level": "NOTICE",
+            "module": "NAMESERVER",
+            "tag": "AXFR_AVAILABLE",
+            "testcase": "NAMESERVER03",
+            "timestamp": 0.982467889785767
+        },
+        {
+            "args": {
+                "ns": "wolke.nullroute.lt/212.71.255.217"
+            },
+            "level": "NOTICE",
+            "module": "NAMESERVER",
+            "tag": "AXFR_AVAILABLE",
+            "testcase": "NAMESERVER03",
+            "timestamp": 1.06236505508423
+        },
+        {
+            "args": {
+                "ns": "wolke.nullroute.lt/2a01:7e00::f03c:92ff:fe44:cc8"
+            },
+            "level": "NOTICE",
+            "module": "NAMESERVER",
+            "tag": "AXFR_AVAILABLE",
+            "testcase": "NAMESERVER03",
+            "timestamp": 1.14207291603088
+        }
+    ],
+    "made.lt_error": [
+        {
+            "args": {
+                "refresh": 10800,
+                "required_refresh": 14400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "REFRESH_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE02",
+            "timestamp": 0.851060152053833
+        },
+        {
+            "args": {
+                "child": "212.24.109.65",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.0520331859588623
+        },
+        {
+            "args": {
+                "zone": "made.lt"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NOT_SIGNED",
+            "testcase": "UNSPECIFIED",
+            "timestamp": 0.0522539615631104
+        }
+    ],
+    "kursiutakas.lt_error": [
+        {
+            "args": {
+                "child": "79.98.25.142",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.0440981388092041
+        },
+        {
+            "args": {
+                "zone": "kursiutakas.lt"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NOT_SIGNED",
+            "testcase": "UNSPECIFIED",
+            "timestamp": 0.0443291664123535
+        }
+    ],
+    "chnadazai.lt_error": [
+        {
+            "args": {
+                "refresh": 10000,
+                "required_refresh": 14400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "REFRESH_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE02",
+            "timestamp": 1.05159211158752
+        },
+        {
+            "args": {
+                "required_retry": 3600,
+                "retry": 2400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "RETRY_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE04",
+            "timestamp": 1.0527651309967
+        },
+        {
+            "args": {
+                "child": "162.159.24.201",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.0946059226989746
+        },
+        {
+            "args": {
+                "zone": "chnadazai.lt"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NOT_SIGNED",
+            "testcase": "UNSPECIFIED",
+            "timestamp": 0.095128059387207
+        }
+    ],
+    "draugelis.lt_error": [
+        {
+            "args": {
+                "child": "195.12.188.34",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.0325450897216797
+        },
+        {
+            "args": {
+                "zone": "draugelis.lt"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NOT_SIGNED",
+            "testcase": "UNSPECIFIED",
+            "timestamp": 0.0327279567718506
+        },
+        {
+            "args": {
+                "ns": "ns2.domreg.lt/2001:778:0:8::8"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 0.0752389430999756
+        },
+        {
+            "args": {
+                "ns": "ns2.domreg.lt/83.171.8.8"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 0.0783169269561768
+        },
+        {
+            "args": {
+                "ns": "ns2.domreg.lt/2001:778:0:8::8",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 0.103089094161987
+        },
+        {
+            "args": {
+                "ns": "ns2.domreg.lt/83.171.8.8",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 0.105909109115601
+        },
+        {
+            "args": {
+                "ns": "ns2.domreg.lt/2001:778:0:8::8"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 0.161373138427734
+        },
+        {
+            "args": {
+                "ns": "ns2.domreg.lt/83.171.8.8"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 0.165156126022339
+        },
+        {
+            "args": {
+                "ns": "ns2.domreg.lt/2001:778:0:8::8"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 0.168669939041138
+        },
+        {
+            "args": {
+                "ns": "ns2.domreg.lt/83.171.8.8"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 0.169093132019043
+        }
+    ],
+    "eatme.lt_error": [
+        {
+            "args": {
+                "child": "13.248.158.159",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.166791915893555
+        },
+        {
+            "args": {
+                "zone": "eatme.lt"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NOT_SIGNED",
+            "testcase": "UNSPECIFIED",
+            "timestamp": 0.167267799377441
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/108.162.193.84"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.54377412796021
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/172.64.33.84"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.57467913627625
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/173.245.59.84"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.60562610626221
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2606:4700:58::adf5:3b54"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.63394498825073
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2803:f800:50::6ca2:c154"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.66105198860168
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2a06:98c1:50::ac40:2154"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.69006204605103
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/108.162.194.106"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.78632712364197
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/162.159.38.106"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.82338714599609
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/172.64.34.106"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.85442495346069
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2606:4700:50::a29f:266a"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.88304901123047
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2803:f800:50::6ca2:c26a"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.91098713874817
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2a06:98c1:50::ac40:226a"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER02",
+            "timestamp": 1.93890404701233
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/108.162.193.84",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 18.9821679592133
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/172.64.33.84",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.0130820274353
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/173.245.59.84",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.0437440872192
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2606:4700:58::adf5:3b54",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.0738270282745
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2803:f800:50::6ca2:c154",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.1042881011963
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2a06:98c1:50::ac40:2154",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.1347980499268
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/108.162.194.106",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.2969801425934
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/162.159.38.106",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.3341529369354
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/172.64.34.106",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.3653960227966
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2606:4700:50::a29f:266a",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.3942239284515
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2803:f800:50::6ca2:c26a",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.4245150089264
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2a06:98c1:50::ac40:226a",
+                "rcode": "REFUSED"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "A_UNEXPECTED_RCODE",
+            "testcase": "NAMESERVER05",
+            "timestamp": 19.4540340900421
+        },
+        {
+            "args": {
+                "ns_ip_list": "13.248.158.159;76.223.21.9"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "N10_EDNS_RESPONSE_ERROR",
+            "testcase": "NAMESERVER10",
+            "timestamp": 20.8661510944366
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/108.162.193.84"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 20.9036939144135
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/172.64.33.84"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 20.9347450733185
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/173.245.59.84"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 20.9657719135284
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2606:4700:58::adf5:3b54"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 20.995404958725
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2803:f800:50::6ca2:c154"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 21.0235280990601
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2a06:98c1:50::ac40:2154"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 21.0524160861969
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/108.162.194.106"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 21.1483681201935
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/162.159.38.106"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 21.1856679916382
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/172.64.34.106"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 21.2167959213257
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2606:4700:50::a29f:266a"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 21.2451329231262
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2803:f800:50::6ca2:c26a"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 21.2753520011902
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2a06:98c1:50::ac40:226a"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER12",
+            "timestamp": 21.3051249980927
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/108.162.193.84"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3068511486053
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/172.64.33.84"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3074610233307
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/173.245.59.84"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3080360889435
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2606:4700:58::adf5:3b54"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3086230754852
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2803:f800:50::6ca2:c154"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3092210292816
+        },
+        {
+            "args": {
+                "ns": "chip.ns.cloudflare.com/2a06:98c1:50::ac40:2154"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3097860813141
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/108.162.194.106"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3112590312958
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/162.159.38.106"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3118190765381
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/172.64.34.106"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3123669624329
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2606:4700:50::a29f:266a"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3130450248718
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2803:f800:50::6ca2:c26a"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.313588142395
+        },
+        {
+            "args": {
+                "ns": "stevie.ns.cloudflare.com/2a06:98c1:50::ac40:226a"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "NS_ERROR",
+            "testcase": "NAMESERVER13",
+            "timestamp": 21.3141720294952
+        }
+    ]
+}

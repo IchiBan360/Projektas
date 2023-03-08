@@ -1,0 +1,31 @@
+{
+    "verpixe.lt_error": {
+        "root[9]": {
+            "args": {
+                "algo_descr": "RSA/SHA-256",
+                "algo_num": 8,
+                "keysize": 1024,
+                "keysizemax": 4096,
+                "keysizemin": 512,
+                "keysizerec": 2048,
+                "keytag": 4365
+            },
+            "level": "WARNING",
+            "module": "DNSSEC",
+            "tag": "DNSKEY_SMALLER_THAN_REC",
+            "testcase": "DNSSEC14",
+            "timestamp": 6.23751497268677
+        },
+        "root[10]": {
+            "args": {
+                "domain": "verpixe.lt",
+                "ns": "dns101.ovh.net/2001:41d0:1:4a91::1"
+            },
+            "level": "ERROR",
+            "module": "NAMESERVER",
+            "tag": "BREAKS_ON_EDNS",
+            "testcase": "NAMESERVER02",
+            "timestamp": 5.44709801673889
+        }
+    }
+}
