@@ -164,15 +164,15 @@ cmd = 'zonemaster-cli' # zonemaster-cli komanda
 #TODO output failu direktorija konfiguracijos faile, situs palikt default
 #TODO narsyti configuracijos failo per direktorijas
 
-configFilePaths =['/etc/pyscantool/config.ini', '~/pyscantool/config.ini',
-                  'config.ini']
+configFilePaths =['/etc/pyscantool/config.ini', 'home/karolis/pyscantool/config.ini', '/home/karolis/config.ini', 'config.ini']
 for cPath in configFilePaths:
     if os.path.exists(cPath):
+        print('radau faila ' + cPath)
         config = configparser.ConfigParser()
         config.read(cPath)
         break
 
-if not config:
+if not 'config' in globals():
     print('nera konfiguracijos failo!')
     exit(1)
 
@@ -184,6 +184,8 @@ poolCount = config['pool-count']['poolCount']
 reportFormat = config['report-format']['format']
 reportDir = config['report-directory']['directory']
 url = config['domain-url']['url'].strip('\n')
+
+# Failu direktorijos
 
 testOut = reportDir +'testresult.txt'
 testOutJson = reportDir +'testresultJson.json'
