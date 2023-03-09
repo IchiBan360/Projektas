@@ -6,7 +6,9 @@ Pradėti naudotis įrankiu prireiks 2 bibliotekų:
 Zonemaster-cli biblioteka, skirta skenuoti nurodytus domenus:
 
 curl -LOs https://package.zonemaster.net/setup.sh
+
 sudo sh setup.sh
+
 sudo apt install zonemaster-cli
 
 ir DeepDiff bibliotekos, kuri yra skirta palengvinti darbą lyginant .json formato failus:
