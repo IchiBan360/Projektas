@@ -3,9 +3,11 @@
 
 Pradėti naudotis įrankiu prireiks 2 bibliotekų:
 
-Yagmail bibliotekos, kuri yra skirta palengvinti darbą su el. pašto siuntimu:
+Zonemaster-cli biblioteka, skirta skenuoti nurodytus domenus:
 
-pip3 install yagmail[all]
+curl -LOs https://package.zonemaster.net/setup.sh
+sudo sh setup.sh
+sudo apt install zonemaster-cli
 
 ir DeepDiff bibliotekos, kuri yra skirta palengvinti darbą lyginant .json formato failus:
 
