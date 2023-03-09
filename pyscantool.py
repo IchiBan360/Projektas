@@ -191,6 +191,9 @@ testErrorJson = reportDir +'testErrorJson.json'
 testDir = reportDir +'testurezultatai/'
 testDirOld = reportDir +'testurezultataiseni/'
 
+# Domenu saraso parsisiuntimas is interneto
+# ir duomenu nuskaitymas
+
 domainFile = requests.get(url)
 open('domainFile.txt', 'wb').write(domainFile.content)
 with open ('domainFile.txt') as f:
