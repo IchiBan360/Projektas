@@ -167,7 +167,6 @@ cmd = 'zonemaster-cli' # zonemaster-cli komanda
 configFilePaths =['/etc/pyscantool/config.ini', 'home/karolis/pyscantool/config.ini', '/home/karolis/config.ini', 'config.ini']
 for cPath in configFilePaths:
     if os.path.exists(cPath):
-        print('radau faila ' + cPath)
         config = configparser.ConfigParser()
         config.read(cPath)
         break

@@ -9,7 +9,7 @@
             "module": "ZONE",
             "tag": "REFRESH_MINIMUM_VALUE_LOWER",
             "testcase": "ZONE02",
-            "timestamp": 1.21598601341248
+            "timestamp": 1.15108203887939
         },
         {
             "args": {
@@ -20,7 +20,7 @@
             "module": "ZONE",
             "tag": "RETRY_MINIMUM_VALUE_LOWER",
             "testcase": "ZONE04",
-            "timestamp": 1.21701097488403
+            "timestamp": 1.15205597877502
         },
         {
             "args": {
@@ -31,7 +31,7 @@
             "module": "ZONE",
             "tag": "SOA_DEFAULT_TTL_MAXIMUM_VALUE_LOWER",
             "testcase": "ZONE06",
-            "timestamp": 1.21795988082886
+            "timestamp": 1.15300703048706
         },
         {
             "args": {
@@ -42,7 +42,7 @@
             "module": "DNSSEC",
             "tag": "NEITHER_DNSKEY_NOR_DS",
             "testcase": "DNSSEC07",
-            "timestamp": 0.0464768409729004
+            "timestamp": 0.0493669509887695
         },
         {
             "args": {
@@ -52,7 +52,7 @@
             "module": "DNSSEC",
             "tag": "NOT_SIGNED",
             "testcase": "UNSPECIFIED",
-            "timestamp": 0.0466949939727783
+            "timestamp": 0.0496859550476074
         }
     ],
     "ybs.lt_error": [
@@ -64,7 +64,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC05",
-            "timestamp": 0.610573053359985
+            "timestamp": 0.586278915405273
         },
         {
             "args": {
@@ -74,7 +74,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC05",
-            "timestamp": 0.6164391040802
+            "timestamp": 0.593518018722534
         },
         {
             "args": {
@@ -84,7 +84,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC05",
-            "timestamp": 0.617788076400757
+            "timestamp": 0.594810009002686
         },
         {
             "args": {
@@ -94,7 +94,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC14",
-            "timestamp": 0.640955924987793
+            "timestamp": 0.616398811340332
         },
         {
             "args": {
@@ -104,7 +104,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC14",
-            "timestamp": 0.641170978546143
+            "timestamp": 0.616683006286621
         },
         {
             "args": {
@@ -114,7 +114,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC14",
-            "timestamp": 0.641369104385376
+            "timestamp": 0.616961002349854
         },
         {
             "args": {
@@ -124,7 +124,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.0668768882751465
+            "timestamp": 0.0702929496765137
         },
         {
             "args": {
@@ -134,7 +134,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.0738699436187744
+            "timestamp": 0.0764861106872559
         },
         {
             "args": {
@@ -144,7 +144,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.0760550498962402
+            "timestamp": 0.0779440402984619
         },
         {
             "args": {
@@ -155,7 +155,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 0.098114013671875
+            "timestamp": 0.0959830284118652
         },
         {
             "args": {
@@ -166,7 +166,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 0.106255054473877
+            "timestamp": 0.103638887405396
         },
         {
             "args": {
@@ -177,7 +177,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 0.108352899551392
+            "timestamp": 0.10509991645813
         },
         {
             "args": {
@@ -187,7 +187,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 0.149070978164673
+            "timestamp": 0.15620493888855
         },
         {
             "args": {
@@ -197,7 +197,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 0.155144929885864
+            "timestamp": 0.163994073867798
         },
         {
             "args": {
@@ -207,7 +207,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 0.156225919723511
+            "timestamp": 0.166768074035645
         },
         {
             "args": {
@@ -217,7 +217,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 0.156725883483887
+            "timestamp": 0.167588949203491
         },
         {
             "args": {
@@ -227,7 +227,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 0.156951904296875
+            "timestamp": 0.167865991592407
         },
         {
             "args": {
@@ -237,7 +237,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 0.157145977020264
+            "timestamp": 0.168123960494995
         }
     ],
     "troxus.lt_error": [
@@ -250,7 +250,17 @@
             "module": "ZONE",
             "tag": "REFRESH_MINIMUM_VALUE_LOWER",
             "testcase": "ZONE02",
-            "timestamp": 2.05650305747986
+            "timestamp": 1.92945003509521
+        },
+        {
+            "args": {
+                "ns_ip_list": "217.146.66.65"
+            },
+            "level": "WARNING",
+            "module": "ZONE",
+            "tag": "Z09_NO_RESPONSE_MX_QUERY",
+            "testcase": "ZONE09",
+            "timestamp": 12.1397001743317
         },
         {
             "args": {},
@@ -258,18 +268,18 @@
             "module": "ZONE",
             "tag": "Z09_MISSING_MAIL_TARGET",
             "testcase": "ZONE09",
-            "timestamp": 2.3283588886261
+            "timestamp": 12.140025138855
         },
         {
             "args": {
-                "child": "217.146.66.65",
+                "child": "2001:1530:b0:700::53",
                 "parent": "195.8.218.131"
             },
             "level": "NOTICE",
             "module": "DNSSEC",
             "tag": "NEITHER_DNSKEY_NOR_DS",
             "testcase": "DNSSEC07",
-            "timestamp": 0.24750018119812
+            "timestamp": 0.184978008270264
         },
         {
             "args": {
@@ -279,7 +289,18 @@
             "module": "DNSSEC",
             "tag": "NOT_SIGNED",
             "testcase": "UNSPECIFIED",
-            "timestamp": 0.247856140136719
+            "timestamp": 0.185528039932251
+        },
+        {
+            "args": {
+                "domain": "troxus.lt",
+                "ns": "ns.zone.eu/217.146.66.65"
+            },
+            "level": "ERROR",
+            "module": "NAMESERVER",
+            "tag": "BREAKS_ON_EDNS",
+            "testcase": "NAMESERVER02",
+            "timestamp": 0.725536108016968
         }
     ],
     "en.lt_error": [
@@ -292,7 +313,7 @@
             "module": "ZONE",
             "tag": "REFRESH_MINIMUM_VALUE_LOWER",
             "testcase": "ZONE02",
-            "timestamp": 1.31871795654297
+            "timestamp": 1.21316909790039
         },
         {
             "args": {
@@ -303,7 +324,7 @@
             "module": "DNSSEC",
             "tag": "NEITHER_DNSKEY_NOR_DS",
             "testcase": "DNSSEC07",
-            "timestamp": 0.153934001922607
+            "timestamp": 0.179462909698486
         },
         {
             "args": {
@@ -313,7 +334,7 @@
             "module": "DNSSEC",
             "tag": "NOT_SIGNED",
             "testcase": "UNSPECIFIED",
-            "timestamp": 0.154474020004272
+            "timestamp": 0.180018901824951
         }
     ],
     "going.lt_error": [
@@ -326,7 +347,7 @@
             "module": "DNSSEC",
             "tag": "DS_BUT_NOT_DNSKEY",
             "testcase": "DNSSEC07",
-            "timestamp": 0.24431300163269
+            "timestamp": 0.244924068450928
         },
         {
             "args": {
@@ -336,7 +357,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC05",
-            "timestamp": 1.35927391052246
+            "timestamp": 1.40835905075073
         },
         {
             "args": {
@@ -346,7 +367,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC05",
-            "timestamp": 1.3594810962677
+            "timestamp": 1.40896415710449
         },
         {
             "args": {
@@ -356,7 +377,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC05",
-            "timestamp": 1.35966205596924
+            "timestamp": 1.40953803062439
         },
         {
             "args": {
@@ -366,7 +387,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC05",
-            "timestamp": 1.35984897613525
+            "timestamp": 1.41010713577271
         },
         {
             "args": {},
@@ -374,7 +395,7 @@
             "module": "DNSSEC",
             "tag": "DS11_DS_BUT_UNSIGNED_ZONE",
             "testcase": "DNSSEC11",
-            "timestamp": 1.77062106132507
+            "timestamp": 1.8282790184021
         },
         {
             "args": {
@@ -384,7 +405,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC14",
-            "timestamp": 12.3891499042511
+            "timestamp": 2.50889015197754
         },
         {
             "args": {
@@ -394,7 +415,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC14",
-            "timestamp": 12.389858007431
+            "timestamp": 2.50949311256409
         },
         {
             "args": {
@@ -404,7 +425,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC14",
-            "timestamp": 12.3904860019684
+            "timestamp": 2.51004910469055
         },
         {
             "args": {
@@ -414,27 +435,7 @@
             "module": "DNSSEC",
             "tag": "NO_RESPONSE_DNSKEY",
             "testcase": "DNSSEC14",
-            "timestamp": 12.3910601139069
-        },
-        {
-            "args": {
-                "ns_ip_list": "91.195.240.8"
-            },
-            "level": "WARNING",
-            "module": "NAMESERVER",
-            "tag": "N10_NO_RESPONSE_EDNS1_QUERY",
-            "testcase": "NAMESERVER10",
-            "timestamp": 15.4568409919739
-        },
-        {
-            "args": {
-                "ns_ip_list": "91.195.240.8"
-            },
-            "level": "WARNING",
-            "module": "NAMESERVER",
-            "tag": "N11_NO_RESPONSE",
-            "testcase": "NAMESERVER11",
-            "timestamp": 15.8324730396271
+            "timestamp": 2.51064300537109
         }
     ],
     "verpixe.lt_error": [
@@ -447,7 +448,7 @@
             "module": "DNSSEC",
             "tag": "DNSKEY_BUT_NOT_DS",
             "testcase": "DNSSEC07",
-            "timestamp": 0.149179935455322
+            "timestamp": 0.10564112663269
         },
         {
             "args": {
@@ -459,7 +460,7 @@
             "module": "DNSSEC",
             "tag": "RRSIG_EXPIRED",
             "testcase": "DNSSEC04",
-            "timestamp": 0.800412893295288
+            "timestamp": 0.806386947631836
         },
         {
             "args": {
@@ -471,7 +472,7 @@
             "module": "DNSSEC",
             "tag": "RRSIG_EXPIRED",
             "testcase": "DNSSEC04",
-            "timestamp": 0.800946950912476
+            "timestamp": 0.806910037994385
         },
         {
             "args": {
@@ -483,7 +484,7 @@
             "module": "DNSSEC",
             "tag": "RRSIG_EXPIRED",
             "testcase": "DNSSEC04",
-            "timestamp": 0.801375865936279
+            "timestamp": 0.807336091995239
         },
         {
             "args": {
@@ -494,7 +495,7 @@
             "module": "DNSSEC",
             "tag": "DS08_DNSKEY_RRSIG_EXPIRED",
             "testcase": "DNSSEC08",
-            "timestamp": 0.970420837402344
+            "timestamp": 0.982980012893677
         },
         {
             "args": {
@@ -505,7 +506,7 @@
             "module": "DNSSEC",
             "tag": "DS08_DNSKEY_RRSIG_EXPIRED",
             "testcase": "DNSSEC08",
-            "timestamp": 0.970488786697388
+            "timestamp": 0.983084917068481
         },
         {
             "args": {
@@ -516,7 +517,7 @@
             "module": "DNSSEC",
             "tag": "DS09_SOA_RRSIG_EXPIRED",
             "testcase": "DNSSEC09",
-            "timestamp": 6.10744094848633
+            "timestamp": 1.11683297157288
         },
         {
             "args": {
@@ -526,7 +527,7 @@
             "module": "DNSSEC",
             "tag": "DS10_NSEC3_RRSIG_VERIFY_ERROR",
             "testcase": "DNSSEC10",
-            "timestamp": 6.30102586746216
+            "timestamp": 1.31126809120178
         },
         {
             "args": {
@@ -542,7 +543,7 @@
             "module": "DNSSEC",
             "tag": "DNSKEY_SMALLER_THAN_REC",
             "testcase": "DNSSEC14",
-            "timestamp": 6.48759078979492
+            "timestamp": 1.49979400634766
         }
     ],
     "yn.lt_error": [
@@ -555,7 +556,7 @@
             "module": "DNSSEC",
             "tag": "NEITHER_DNSKEY_NOR_DS",
             "testcase": "DNSSEC07",
-            "timestamp": 0.094228982925415
+            "timestamp": 0.098721981048584
         },
         {
             "args": {
@@ -565,7 +566,7 @@
             "module": "DNSSEC",
             "tag": "NOT_SIGNED",
             "testcase": "UNSPECIFIED",
-            "timestamp": 0.094822883605957
+            "timestamp": 0.0993499755859375
         },
         {
             "args": {
@@ -575,7 +576,7 @@
             "module": "NAMESERVER",
             "tag": "IS_A_RECURSOR",
             "testcase": "NAMESERVER01",
-            "timestamp": 0.209197044372559
+            "timestamp": 0.20829701423645
         },
         {
             "args": {
@@ -585,7 +586,7 @@
             "module": "NAMESERVER",
             "tag": "IS_A_RECURSOR",
             "testcase": "NAMESERVER01",
-            "timestamp": 1.03520107269287
+            "timestamp": 1.03433895111084
         }
     ],
     "merinox.lt_error": [
@@ -595,7 +596,7 @@
             "module": "ZONE",
             "tag": "Z09_MISSING_MAIL_TARGET",
             "testcase": "ZONE09",
-            "timestamp": 2.33598017692566
+            "timestamp": 1.8602819442749
         },
         {
             "args": {
@@ -611,7 +612,7 @@
             "module": "DNSSEC",
             "tag": "DNSKEY_SMALLER_THAN_REC",
             "testcase": "DNSSEC14",
-            "timestamp": 2.54836511611938
+            "timestamp": 1.87219595909119
         },
         {
             "args": {
@@ -627,7 +628,7 @@
             "module": "DNSSEC",
             "tag": "DNSKEY_SMALLER_THAN_REC",
             "testcase": "DNSSEC14",
-            "timestamp": 2.54843997955322
+            "timestamp": 1.87240290641785
         },
         {
             "args": {
@@ -638,7 +639,7 @@
             "module": "DNSSEC",
             "tag": "DS16_CDS_NOT_SIGNED_BY_CDS",
             "testcase": "DNSSEC16",
-            "timestamp": 3.03517508506775
+            "timestamp": 2.23299193382263
         },
         {
             "args": {
@@ -649,7 +650,7 @@
             "module": "DNSSEC",
             "tag": "DS17_CDNSKEY_NOT_SIGNED_BY_CDNSKEY",
             "testcase": "DNSSEC17",
-            "timestamp": 3.04192304611206
+            "timestamp": 2.23868107795715
         },
         {
             "args": {
@@ -659,7 +660,7 @@
             "module": "DNSSEC",
             "tag": "DS18_NO_MATCH_CDS_RRSIG_DS",
             "testcase": "DNSSEC18",
-            "timestamp": 3.05262017250061
+            "timestamp": 2.24841809272766
         },
         {
             "args": {
@@ -669,7 +670,7 @@
             "module": "DNSSEC",
             "tag": "DS18_NO_MATCH_CDNSKEY_RRSIG_DS",
             "testcase": "DNSSEC18",
-            "timestamp": 3.05268597602844
+            "timestamp": 2.24848103523254
         }
     ],
     "symlink.lt_error": [
@@ -679,7 +680,7 @@
             "module": "ZONE",
             "tag": "Z09_MISSING_MAIL_TARGET",
             "testcase": "ZONE09",
-            "timestamp": 1.23810911178589
+            "timestamp": 1.28413391113281
         },
         {
             "args": {
@@ -690,7 +691,7 @@
             "module": "DNSSEC",
             "tag": "DS02_NO_MATCH_DS_DNSKEY",
             "testcase": "DNSSEC02",
-            "timestamp": 0.868422985076904
+            "timestamp": 0.838167905807495
         },
         {
             "args": {
@@ -700,7 +701,7 @@
             "module": "NAMESERVER",
             "tag": "AXFR_AVAILABLE",
             "testcase": "NAMESERVER03",
-            "timestamp": 0.901075839996338
+            "timestamp": 0.924946069717407
         },
         {
             "args": {
@@ -710,7 +711,7 @@
             "module": "NAMESERVER",
             "tag": "AXFR_AVAILABLE",
             "testcase": "NAMESERVER03",
-            "timestamp": 0.968168973922729
+            "timestamp": 0.992552995681763
         },
         {
             "args": {
@@ -720,7 +721,7 @@
             "module": "NAMESERVER",
             "tag": "AXFR_AVAILABLE",
             "testcase": "NAMESERVER03",
-            "timestamp": 1.02760291099548
+            "timestamp": 1.05909609794617
         },
         {
             "args": {
@@ -730,7 +731,7 @@
             "module": "NAMESERVER",
             "tag": "AXFR_AVAILABLE",
             "testcase": "NAMESERVER03",
-            "timestamp": 1.03076601028442
+            "timestamp": 1.06218004226685
         },
         {
             "args": {
@@ -740,7 +741,7 @@
             "module": "NAMESERVER",
             "tag": "AXFR_AVAILABLE",
             "testcase": "NAMESERVER03",
-            "timestamp": 1.11573386192322
+            "timestamp": 1.13989591598511
         },
         {
             "args": {
@@ -750,7 +751,7 @@
             "module": "NAMESERVER",
             "tag": "AXFR_AVAILABLE",
             "testcase": "NAMESERVER03",
-            "timestamp": 1.19521403312683
+            "timestamp": 1.22065591812134
         }
     ],
     "made.lt_error": [
@@ -763,7 +764,7 @@
             "module": "ZONE",
             "tag": "REFRESH_MINIMUM_VALUE_LOWER",
             "testcase": "ZONE02",
-            "timestamp": 0.920727968215942
+            "timestamp": 0.916393995285034
         },
         {
             "args": {
@@ -774,7 +775,7 @@
             "module": "DNSSEC",
             "tag": "NEITHER_DNSKEY_NOR_DS",
             "testcase": "DNSSEC07",
-            "timestamp": 0.0536150932312012
+            "timestamp": 0.0555050373077393
         },
         {
             "args": {
@@ -784,7 +785,7 @@
             "module": "DNSSEC",
             "tag": "NOT_SIGNED",
             "testcase": "UNSPECIFIED",
-            "timestamp": 0.0538599491119385
+            "timestamp": 0.0557570457458496
         }
     ],
     "kursiutakas.lt_error": [
@@ -797,7 +798,7 @@
             "module": "DNSSEC",
             "tag": "NEITHER_DNSKEY_NOR_DS",
             "testcase": "DNSSEC07",
-            "timestamp": 0.044884204864502
+            "timestamp": 0.0415620803833008
         },
         {
             "args": {
@@ -807,7 +808,7 @@
             "module": "DNSSEC",
             "tag": "NOT_SIGNED",
             "testcase": "UNSPECIFIED",
-            "timestamp": 0.0451571941375732
+            "timestamp": 0.0418150424957275
         }
     ],
     "chnadazai.lt_error": [
@@ -820,7 +821,7 @@
             "module": "ZONE",
             "tag": "REFRESH_MINIMUM_VALUE_LOWER",
             "testcase": "ZONE02",
-            "timestamp": 1.01554203033447
+            "timestamp": 0.907077074050903
         },
         {
             "args": {
@@ -831,7 +832,7 @@
             "module": "ZONE",
             "tag": "RETRY_MINIMUM_VALUE_LOWER",
             "testcase": "ZONE04",
-            "timestamp": 1.01639699935913
+            "timestamp": 0.908218145370483
         },
         {
             "args": {
@@ -842,7 +843,7 @@
             "module": "DNSSEC",
             "tag": "NEITHER_DNSKEY_NOR_DS",
             "testcase": "DNSSEC07",
-            "timestamp": 0.0902040004730225
+            "timestamp": 0.0941388607025146
         },
         {
             "args": {
@@ -852,7 +853,7 @@
             "module": "DNSSEC",
             "tag": "NOT_SIGNED",
             "testcase": "UNSPECIFIED",
-            "timestamp": 0.0906100273132324
+            "timestamp": 0.0946998596191406
         }
     ],
     "draugelis.lt_error": [
@@ -865,7 +866,7 @@
             "module": "DNSSEC",
             "tag": "NEITHER_DNSKEY_NOR_DS",
             "testcase": "DNSSEC07",
-            "timestamp": 0.0377359390258789
+            "timestamp": 0.0348949432373047
         },
         {
             "args": {
@@ -875,7 +876,7 @@
             "module": "DNSSEC",
             "tag": "NOT_SIGNED",
             "testcase": "UNSPECIFIED",
-            "timestamp": 0.0379860401153564
+            "timestamp": 0.0351560115814209
         },
         {
             "args": {
@@ -885,7 +886,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.0912249088287354
+            "timestamp": 0.0706088542938232
         },
         {
             "args": {
@@ -895,7 +896,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.0938498973846436
+            "timestamp": 0.0733850002288818
         },
         {
             "args": {
@@ -906,7 +907,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 0.113261938095093
+            "timestamp": 0.095973014831543
         },
         {
             "args": {
@@ -917,7 +918,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 0.115801811218262
+            "timestamp": 0.0987849235534668
         },
         {
             "args": {
@@ -927,7 +928,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 0.186165809631348
+            "timestamp": 0.149279832839966
         },
         {
             "args": {
@@ -937,7 +938,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 0.188736915588379
+            "timestamp": 0.152113914489746
         },
         {
             "args": {
@@ -947,7 +948,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 0.190678834915161
+            "timestamp": 0.154145002365112
         },
         {
             "args": {
@@ -957,7 +958,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 0.190874814987183
+            "timestamp": 0.154338836669922
         }
     ],
     "eatme.lt_error": [
@@ -970,7 +971,7 @@
             "module": "DNSSEC",
             "tag": "NEITHER_DNSKEY_NOR_DS",
             "testcase": "DNSSEC07",
-            "timestamp": 0.158152103424072
+            "timestamp": 0.155854940414429
         },
         {
             "args": {
@@ -980,7 +981,7 @@
             "module": "DNSSEC",
             "tag": "NOT_SIGNED",
             "testcase": "UNSPECIFIED",
-            "timestamp": 0.158653020858765
+            "timestamp": 0.156424045562744
         },
         {
             "args": {
@@ -990,7 +991,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.47613000869751
+            "timestamp": 0.457174062728882
         },
         {
             "args": {
@@ -1000,7 +1001,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.477509021759033
+            "timestamp": 0.45845103263855
         },
         {
             "args": {
@@ -1010,7 +1011,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.479052066802979
+            "timestamp": 0.459990978240967
         },
         {
             "args": {
@@ -1020,7 +1021,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.481060981750488
+            "timestamp": 0.462017059326172
         },
         {
             "args": {
@@ -1030,7 +1031,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.482924938201904
+            "timestamp": 0.463845014572144
         },
         {
             "args": {
@@ -1040,7 +1041,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.484446048736572
+            "timestamp": 0.465242862701416
         },
         {
             "args": {
@@ -1050,7 +1051,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.553672075271606
+            "timestamp": 0.531304836273193
         },
         {
             "args": {
@@ -1060,7 +1061,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.555945873260498
+            "timestamp": 0.533836841583252
         },
         {
             "args": {
@@ -1070,7 +1071,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.558413028717041
+            "timestamp": 0.536334991455078
         },
         {
             "args": {
@@ -1080,7 +1081,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.560983896255493
+            "timestamp": 0.53898286819458
         },
         {
             "args": {
@@ -1090,7 +1091,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.563570976257324
+            "timestamp": 0.541075944900513
         },
         {
             "args": {
@@ -1100,7 +1101,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER02",
-            "timestamp": 0.565749883651733
+            "timestamp": 0.543773889541626
         },
         {
             "args": {
@@ -1111,7 +1112,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.4332420825958
+            "timestamp": 10.6957440376282
         },
         {
             "args": {
@@ -1122,7 +1123,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.4348499774933
+            "timestamp": 10.6980800628662
         },
         {
             "args": {
@@ -1133,7 +1134,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.4362609386444
+            "timestamp": 10.7003328800201
         },
         {
             "args": {
@@ -1144,7 +1145,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.4379329681396
+            "timestamp": 10.7024118900299
         },
         {
             "args": {
@@ -1155,7 +1156,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.4395530223846
+            "timestamp": 10.7041308879852
         },
         {
             "args": {
@@ -1166,7 +1167,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.4407849311829
+            "timestamp": 10.7058918476105
         },
         {
             "args": {
@@ -1177,7 +1178,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.5737030506134
+            "timestamp": 10.8372719287872
         },
         {
             "args": {
@@ -1188,7 +1189,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.575779914856
+            "timestamp": 10.8399670124054
         },
         {
             "args": {
@@ -1199,7 +1200,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.5778138637543
+            "timestamp": 10.8424570560455
         },
         {
             "args": {
@@ -1210,7 +1211,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.5801849365234
+            "timestamp": 10.8449969291687
         },
         {
             "args": {
@@ -1221,7 +1222,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.5824289321899
+            "timestamp": 10.8472509384155
         },
         {
             "args": {
@@ -1232,7 +1233,7 @@
             "module": "NAMESERVER",
             "tag": "A_UNEXPECTED_RCODE",
             "testcase": "NAMESERVER05",
-            "timestamp": 14.5848939418793
+            "timestamp": 10.8494019508362
         },
         {
             "args": {
@@ -1242,7 +1243,7 @@
             "module": "NAMESERVER",
             "tag": "N10_EDNS_RESPONSE_ERROR",
             "testcase": "NAMESERVER10",
-            "timestamp": 15.0306100845337
+            "timestamp": 11.2919209003448
         },
         {
             "args": {
@@ -1252,7 +1253,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.0403070449829
+            "timestamp": 11.300281047821
         },
         {
             "args": {
@@ -1262,7 +1263,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.0419790744781
+            "timestamp": 11.3023769855499
         },
         {
             "args": {
@@ -1272,7 +1273,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.0433678627014
+            "timestamp": 11.3040239810944
         },
         {
             "args": {
@@ -1282,7 +1283,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.0450129508972
+            "timestamp": 11.3058779239655
         },
         {
             "args": {
@@ -1292,7 +1293,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.0469119548798
+            "timestamp": 11.3074069023132
         },
         {
             "args": {
@@ -1302,7 +1303,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.0488798618317
+            "timestamp": 11.3088529109955
         },
         {
             "args": {
@@ -1312,7 +1313,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.1168348789215
+            "timestamp": 11.3768219947815
         },
         {
             "args": {
@@ -1322,7 +1323,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.1190600395203
+            "timestamp": 11.379045009613
         },
         {
             "args": {
@@ -1332,7 +1333,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.1210360527039
+            "timestamp": 11.3813660144806
         },
         {
             "args": {
@@ -1342,7 +1343,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.1236250400543
+            "timestamp": 11.3837368488312
         },
         {
             "args": {
@@ -1352,7 +1353,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.125864982605
+            "timestamp": 11.386106967926
         },
         {
             "args": {
@@ -1362,7 +1363,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER12",
-            "timestamp": 15.1283400058746
+            "timestamp": 11.38813996315
         },
         {
             "args": {
@@ -1372,7 +1373,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1296648979187
+            "timestamp": 11.3890700340271
         },
         {
             "args": {
@@ -1382,7 +1383,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1299500465393
+            "timestamp": 11.3894460201263
         },
         {
             "args": {
@@ -1392,7 +1393,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1302280426025
+            "timestamp": 11.3897888660431
         },
         {
             "args": {
@@ -1402,7 +1403,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1305019855499
+            "timestamp": 11.3901200294495
         },
         {
             "args": {
@@ -1412,7 +1413,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.130774974823
+            "timestamp": 11.3904459476471
         },
         {
             "args": {
@@ -1422,7 +1423,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1310610771179
+            "timestamp": 11.3907608985901
         },
         {
             "args": {
@@ -1432,7 +1433,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1317908763885
+            "timestamp": 11.3916070461273
         },
         {
             "args": {
@@ -1442,7 +1443,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1320559978485
+            "timestamp": 11.3919188976288
         },
         {
             "args": {
@@ -1452,7 +1453,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1323258876801
+            "timestamp": 11.3922488689423
         },
         {
             "args": {
@@ -1462,7 +1463,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1325919628143
+            "timestamp": 11.392569065094
         },
         {
             "args": {
@@ -1472,7 +1473,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1328549385071
+            "timestamp": 11.3928949832916
         },
         {
             "args": {
@@ -1482,7 +1483,7 @@
             "module": "NAMESERVER",
             "tag": "NS_ERROR",
             "testcase": "NAMESERVER13",
-            "timestamp": 15.1331169605255
+            "timestamp": 11.3932209014893
         }
     ]
 }

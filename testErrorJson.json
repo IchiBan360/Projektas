@@ -1,34 +1,25 @@
 {
-    "going.lt_error": {
-        "root[9]": {
+    "troxus.lt_error": {
+        "root[4]": {
             "args": {
-                "ns": "ns2.sedoparking.com/91.195.240.8"
+                "zone": "troxus.lt"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NOT_SIGNED",
+            "testcase": "UNSPECIFIED",
+            "timestamp": 0.185528039932251
+        },
+        "root[5]": {
+            "args": {
+                "domain": "troxus.lt",
+                "ns": "ns.zone.eu/217.146.66.65"
             },
             "level": "ERROR",
-            "module": "DNSSEC",
-            "tag": "NO_RESPONSE_DNSKEY",
-            "testcase": "DNSSEC14",
-            "timestamp": 2.51092910766602
-        },
-        "root[10]": {
-            "args": {
-                "ns_ip_list": "91.195.241.8"
-            },
-            "level": "WARNING",
             "module": "NAMESERVER",
-            "tag": "N10_NO_RESPONSE_EDNS1_QUERY",
-            "testcase": "NAMESERVER10",
-            "timestamp": 15.3255579471588
-        },
-        "root[11]": {
-            "args": {
-                "ns_ip_list": "91.195.241.8"
-            },
-            "level": "WARNING",
-            "module": "NAMESERVER",
-            "tag": "N11_NO_RESPONSE",
-            "testcase": "NAMESERVER11",
-            "timestamp": 15.698835849762
+            "tag": "BREAKS_ON_EDNS",
+            "testcase": "NAMESERVER02",
+            "timestamp": 0.725536108016968
         }
     }
 }
