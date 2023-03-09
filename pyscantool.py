@@ -6,11 +6,10 @@ import time
 import glob
 import json
 import fcntl
+import requests
 from difflib import Differ
 from deepdiff import DeepDiff
 from multiprocessing import Pool
-
-import smtplib
 from email.message import EmailMessage
 
 # Raporto siuntimo elektroniniu pastu funkcija
@@ -40,27 +39,6 @@ def email(body, files):
       #  server.login(sender, password)
        # server.send_message(msg)
         #server.quit()
-
-def klaiduPalyginimasTxt(domain):
-    differences = ''
-
-    count = 0
-    if os.path.exists(testDirOld + domain + '.txt'):
-        with open(testDir + domain + '.txt') as file_1, open(testDirOld + domain + '.txt') as file_2:
-            differ = Differ()
-            for line in differ.compare(file_1.readlines(), file_2.readlines()):
-                diff = line
-                if diff.startswith('-'):
-                    count = count + 1
-                    differences = differences + diff
-        if count != 0:
-            body = (domain + ' testo metu buvo rasta nauju klaidu: \n' + differences)
-            return body
-        else:
-            return differences
-    else:
-        return ''
-    
 
 # domenu testavimas TXT formatu
 # iskvieciama zonemaster-cli funkcija, norint skenuoti nurodytus domenus
@@ -115,6 +93,26 @@ def klaiduPalyginimasJson(domain):
         return('{}')
 
 
+def klaiduPalyginimasTxt(domain):
+    differences = ''
+
+    count = 0
+    if os.path.exists(testDirOld + domain + '.txt'):
+        with open(testDir + domain + '.txt') as file_1, open(testDirOld + domain + '.txt') as file_2:
+            differ = Differ()
+            for line in differ.compare(file_1.readlines(), file_2.readlines()):
+                diff = line
+                if diff.startswith('-'):
+                    count = count + 1
+                    differences = differences + diff
+        if count != 0:
+            body = (domain + ' testo metu buvo rasta nauju klaidu: \n' + differences)
+            return body
+        else:
+            return differences
+    else:
+        return ''
+
 # sudedam visus domenu testu rezultatus i viena faila
 
 def raportoFailasTxt():
@@ -166,27 +164,38 @@ cmd = 'zonemaster-cli' # zonemaster-cli komanda
 #TODO output failu direktorija konfiguracijos faile, situs palikt default
 #TODO narsyti configuracijos failo per direktorijas
 
-testOut = 'testresult.txt'
-testOutJson = 'testresultJson.json'
-testErrorJson = 'testErrorJson.json'
-configFilePath = 'config.ini'
-testDir = 'testurezultatai/'
-testDirOld = 'testurezultataiseni/'
+configFilePaths =['/etc/pyscantool/config.ini', '~/pyscantool/config.ini',
+                  'config.ini']
+for cPath in configFilePaths:
+    if os.path.exists(cPath):
+        config = configparser.ConfigParser()
+        config.read(cPath)
+        break
 
-if not os.path.exists(configFilePath):
+if not config:
     print('nera konfiguracijos failo!')
     exit(1)
-
-config = configparser.ConfigParser()
-config.read(configFilePath) # skaitom konfiguracinio failo nustatymus
 
 # Testavimo budo nuskaitymas is config.ini failo
 
 sleepTime = config['sleep-time']['sleep']
 tests = config['test-cases']['tests'].split(',')
-domains = config['domain-names']['domains'].split(',')
 poolCount = config['pool-count']['poolCount']
 reportFormat = config['report-format']['format']
+reportDir = config['report-directory']['directory']
+url = config['domain-url']['url'].strip('\n')
+
+testOut = reportDir +'testresult.txt'
+testOutJson = reportDir +'testresultJson.json'
+testErrorJson = reportDir +'testErrorJson.json'
+testDir = reportDir +'testurezultatai/'
+testDirOld = reportDir +'testurezultataiseni/'
+
+domainFile = requests.get(url)
+open('domainFile.txt', 'wb').write(domainFile.content)
+with open ('domainFile.txt') as f:
+    domains = f.read()
+    domains = domains.replace('\n', '').split(',')
 
 domainStr = ' '.join(map(str,domains))
 testStr = ' '.join(map(str,tests))
@@ -198,38 +207,32 @@ if not os.path.exists(testDirOld):
 
 if reportFormat == 'json': # Raporto kurimas JSON formatu
 
-    while True:
-        
-        config = configparser.ConfigParser()
-        config.read(configFilePath) # skaitom konfiguracinio failo nustatymus
-        poolCount = config['pool-count']['poolCount']
-        start_time = time.time()
-        with Pool(processes=int(poolCount)) as pool: # parallel testu vykdymas
-            pool.map(skenavimasJson, domains) # Pool kiekis priklauso nuo nurodyto kiekio
-        print('uztruko %s sekundes' % (time.time() - start_time))
-        raportoFailasJson() #Sudaromas raporto failas su visomis klaidomis
-        errorlist = {} # susirasom visas naujas klaidas i zodyna
-        for domain in domains:
-            jsonResult = klaiduPalyginimasJson(domain)
-            jsondiff = json.loads(jsonResult)
-            if 'iterable_item_added' in jsondiff:
-                errorlist[domain + '_error'] = jsondiff['iterable_item_added'] #Isirasom tik naujai rastas klaidas
-        if errorlist.keys():
-            print('buvo rasta nauju klaidu')
-            fd = open(testErrorJson, 'w')
-            json.dump(errorlist, fd, indent=4)
-            fd.close()
-            print('rasta nauju klaidu')
-            body = ('Domenu skenavimo metu buvo rasta nauju klaidu!\n Skenuoti domenai: {} \n Daryti testai: {} \n \n Naujos klaidos pridetos testErrorJson faile'.format(domainStr,testStr))
-            files=[testOutJson,testErrorJson]
-        else:
-            print('nerasta nauju klaidu')
-            body = ('Domenu skenavimo metu nebuvo rasta nauju klaidu!\n Skenuoti domenai: {} \n Daryti testai: {}'.format(domainStr,testStr))
-            files = [testOutJson]
-        email(body,files)
-        #emailSiuntimas(body,files) # Siunciam email
-        print('testavimas atliktas sekmingai')
-        exit(0)
+    start_time = time.time()
+    with Pool(processes=int(poolCount)) as pool: # parallel testu vykdymas
+        pool.map(skenavimasJson, domains) # Pool kiekis priklauso nuo nurodyto kiekio
+    print('uztruko %s sekundes' % (time.time() - start_time))
+    raportoFailasJson() #Sudaromas raporto failas su visomis klaidomis
+    errorlist = {} # susirasom visas naujas klaidas i zodyna
+    for domain in domains:
+        jsonResult = klaiduPalyginimasJson(domain)
+        jsondiff = json.loads(jsonResult)
+        if 'iterable_item_added' in jsondiff:
+            errorlist[domain + '_error'] = jsondiff['iterable_item_added'] #Isirasom tik naujai rastas klaidas
+    if errorlist.keys():
+        print('buvo rasta nauju klaidu')
+        fd = open(testErrorJson, 'w')
+        json.dump(errorlist, fd, indent=4)
+        fd.close()
+        print('rasta nauju klaidu')
+        body = ('Domenu skenavimo metu buvo rasta nauju klaidu!\n Skenuoti domenai: {} \n Daryti testai: {} \n \n Naujos klaidos pridetos testErrorJson faile'.format(domainStr,testStr))
+        files=[testOutJson,testErrorJson]
+    else:
+        print('nerasta nauju klaidu')
+        body = ('Domenu skenavimo metu nebuvo rasta nauju klaidu!\n Skenuoti domenai: {} \n Daryti testai: {}'.format(domainStr,testStr))
+        files = [testOutJson]
+    email(body,files)
+    print('testavimas atliktas sekmingai')
+    exit(0)
 
 elif reportFormat == 'txt': # Raporto kurimas TXT formatu
 
@@ -240,9 +243,6 @@ elif reportFormat == 'txt': # Raporto kurimas TXT formatu
     fd.writelines('\n')
     fd.close()
   
-    config = configparser.ConfigParser()
-    config.read(configFilePath) # skaitom konfiguracinio failo nustatymus
-    poolCount = config['pool-count']['poolCount']
     start_time = time.time()
     with Pool(processes=int(poolCount)) as pool: # parallel testu vykdymas
         pool.map(skenavimasTxt, domains) # Pool kiekis priklauso nuo nurodyto kiekio
