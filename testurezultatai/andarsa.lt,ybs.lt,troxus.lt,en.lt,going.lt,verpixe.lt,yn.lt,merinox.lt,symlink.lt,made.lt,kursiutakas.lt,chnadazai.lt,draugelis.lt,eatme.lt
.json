@@ -1,4 +1,0 @@
-Seconds Level     Message
-======= ========= =======
-  20.81 CRITICAL  No NS records for tested zone from parent. NS tests skipped.
-  20.81 CRITICAL  Not enough data about andarsa.lt,ybs.lt,troxus.lt,en.lt,going.lt,verpixe.lt,yn.lt,merinox.lt,symlink.lt,made.lt,kursiutakas.lt,chnadazai.lt,draugelis.lt,eatme.lt was found to be able to run tests.

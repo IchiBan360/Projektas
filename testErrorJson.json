@@ -1,25 +1,160 @@
 {
-    "troxus.lt_error": {
-        "root[4]": {
+    "andarsa.lt": {
+        "root[2]": {
             "args": {
-                "zone": "troxus.lt"
+                "refresh": 3600,
+                "required_refresh": 14400
             },
             "level": "NOTICE",
-            "module": "DNSSEC",
-            "tag": "NOT_SIGNED",
-            "testcase": "UNSPECIFIED",
-            "timestamp": 0.185528039932251
+            "module": "ZONE",
+            "tag": "REFRESH_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE02",
+            "timestamp": 0.129901170730591
         },
-        "root[5]": {
+        "root[3]": {
             "args": {
-                "domain": "troxus.lt",
-                "ns": "ns.zone.eu/217.146.66.65"
+                "required_retry": 3600,
+                "retry": 900
             },
-            "level": "ERROR",
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "RETRY_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE04",
+            "timestamp": 0.130834102630615
+        },
+        "root[4]": {
+            "args": {
+                "lowest_minimum": 300,
+                "minimum": 60
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "SOA_DEFAULT_TTL_MAXIMUM_VALUE_LOWER",
+            "testcase": "ZONE06",
+            "timestamp": 0.131772041320801
+        }
+    },
+    "troxus.lt": {
+        "root[2]": {
+            "args": {
+                "refresh": 10800,
+                "required_refresh": 14400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "REFRESH_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE02",
+            "timestamp": 0.286669015884399
+        },
+        "root[3]": {
+            "args": {},
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "Z09_MISSING_MAIL_TARGET",
+            "testcase": "ZONE09",
+            "timestamp": 0.54512882232666
+        }
+    },
+    "en.lt": {
+        "root[2]": {
+            "args": {
+                "refresh": 3600,
+                "required_refresh": 14400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "REFRESH_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE02",
+            "timestamp": 0.166181087493896
+        }
+    },
+    "going.lt": {
+        "root[10]": {
+            "args": {
+                "ns_ip_list": "91.195.241.8"
+            },
+            "level": "WARNING",
             "module": "NAMESERVER",
-            "tag": "BREAKS_ON_EDNS",
-            "testcase": "NAMESERVER02",
-            "timestamp": 0.725536108016968
+            "tag": "N10_NO_RESPONSE_EDNS1_QUERY",
+            "testcase": "NAMESERVER10",
+            "timestamp": 15.6805090904236
+        },
+        "root[11]": {
+            "args": {
+                "ns_ip_list": "91.195.241.8"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "N11_NO_RESPONSE",
+            "testcase": "NAMESERVER11",
+            "timestamp": 16.0640110969543
+        },
+        "root[12]": {
+            "args": {
+                "ns_ip_list": "91.195.241.8"
+            },
+            "level": "WARNING",
+            "module": "ZONE",
+            "tag": "Z09_NO_RESPONSE_MX_QUERY",
+            "testcase": "ZONE09",
+            "timestamp": 0.747627973556519
+        }
+    },
+    "merinox.lt": {
+        "root[6]": {
+            "args": {},
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "Z09_MISSING_MAIL_TARGET",
+            "testcase": "ZONE09",
+            "timestamp": 0.431972980499268
+        }
+    },
+    "symlink.lt": {
+        "root[7]": {
+            "args": {},
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "Z09_MISSING_MAIL_TARGET",
+            "testcase": "ZONE09",
+            "timestamp": 0.291502952575684
+        }
+    },
+    "made.lt": {
+        "root[2]": {
+            "args": {
+                "refresh": 10800,
+                "required_refresh": 14400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "REFRESH_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE02",
+            "timestamp": 0.0994541645050049
+        }
+    },
+    "chnadazai.lt": {
+        "root[2]": {
+            "args": {
+                "refresh": 10000,
+                "required_refresh": 14400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "REFRESH_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE02",
+            "timestamp": 0.0680480003356934
+        },
+        "root[3]": {
+            "args": {
+                "required_retry": 3600,
+                "retry": 2400
+            },
+            "level": "NOTICE",
+            "module": "ZONE",
+            "tag": "RETRY_MINIMUM_VALUE_LOWER",
+            "testcase": "ZONE04",
+            "timestamp": 0.068795919418335
         }
     }
 }

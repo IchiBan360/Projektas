@@ -1,3 +1,4 @@
+import smtplib
 import subprocess
 import configparser
 import os.path
@@ -33,7 +34,7 @@ def email(body, files):
             file_name=file.name
             print('tipo siuncia email')
             msg.add_attachment(file_data,filename=file_name)
-
+    print (body)
     #with smtplib.SMTP_SSL(serverName) as server: # atidarome smtp serveri zinutes siuntimui
      #   server.ehlo()
       #  server.login(sender, password)
@@ -87,8 +88,8 @@ def klaiduPalyginimasJson(domain):
             json_content_1 = json.loads(data1) # pakraunam abu json failus lyginimui
             data2 = file_2.read()
             json_content_2 = json.loads(data2)
-            res = DeepDiff(json_content_2, json_content_1, ignore_string_type_changes = True, exclude_regex_paths="timestamp").to_json()
-        return(res) # grazinama naujai atsiradusios klaidos 
+            res = DeepDiff(json_content_2, json_content_1, ignore_string_type_changes = False, exclude_regex_paths="timestamp").to_json()
+        return(res)
     else:
         return('{}')
 
@@ -128,7 +129,7 @@ def raportoFailasJson():
     for domain in domains:
         with open(testDir + domain + '.json', 'r') as infile:
             jsondiff = json.load(infile)
-            errorList[domain +'_error'] = jsondiff
+            errorList[domain] = jsondiff
     
     with open(testOutJson, 'w') as outfile:
         json.dump(errorList, outfile, indent=4)
@@ -208,9 +209,8 @@ if not os.path.exists(testDir):
     os.makedirs(testDir)
 if not os.path.exists(testDirOld):
     os.makedirs(testDirOld)
-
+errorString = ''
 if reportFormat == 'json': # Raporto kurimas JSON formatu
-
     start_time = time.time()
     with Pool(processes=int(poolCount)) as pool: # parallel testu vykdymas
         pool.map(skenavimasJson, domains) # Pool kiekis priklauso nuo nurodyto kiekio
@@ -221,18 +221,27 @@ if reportFormat == 'json': # Raporto kurimas JSON formatu
         jsonResult = klaiduPalyginimasJson(domain)
         jsondiff = json.loads(jsonResult)
         if 'iterable_item_added' in jsondiff:
-            errorlist[domain + '_error'] = jsondiff['iterable_item_added'] #Isirasom tik naujai rastas klaidas
+            errorlist[domain] = jsondiff['iterable_item_added'] #Isirasom tik naujai rastas klaidas
+            errorString += '\n' + domain + ' domeno klaidos: \n'
+            for key in errorlist[domain].keys():
+                errorString += '''
+                Level: {} 
+                Module: {} 
+                Tag: {} 
+                TestCase: {} 
+                '''.format(errorlist[domain][key]['level'], errorlist[domain][key]['module']
+                            ,errorlist[domain][key]['tag'], errorlist[domain][key]['testcase'])
     if errorlist.keys():
         print('buvo rasta nauju klaidu')
         fd = open(testErrorJson, 'w')
         json.dump(errorlist, fd, indent=4)
         fd.close()
         print('rasta nauju klaidu')
-        body = ('Domenu skenavimo metu buvo rasta nauju klaidu!\n Skenuoti domenai: {} \n Daryti testai: {} \n \n Naujos klaidos pridetos testErrorJson faile'.format(domainStr,testStr))
+        body = ('Domenu skenavimo metu buvo rasta nauju klaidu!\n\nSkenuoti domenai: {} \n\nDaryti testai: {} \n\nNaujos klaidos: \n\n{} \n\nNaujos klaidos pridetos testErrorJson faile'.format(domainStr,testStr, errorString))
         files=[testOutJson,testErrorJson]
     else:
         print('nerasta nauju klaidu')
-        body = ('Domenu skenavimo metu nebuvo rasta nauju klaidu!\n Skenuoti domenai: {} \n Daryti testai: {}'.format(domainStr,testStr))
+        body = ('Domenu skenavimo metu nebuvo rasta nauju klaidu!\n\nSkenuoti domenai: {} \n\nDaryti testai: {}'.format(domainStr,testStr))
         files = [testOutJson]
     email(body,files)
     print('testavimas atliktas sekmingai')
