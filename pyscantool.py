@@ -32,14 +32,12 @@ def email(body, files):
         with open(f) as file:
             file_data=file.read()
             file_name=file.name
-            print('tipo siuncia email')
             msg.add_attachment(file_data,filename=file_name)
-    print (body)
-    #with smtplib.SMTP_SSL(serverName) as server: # atidarome smtp serveri zinutes siuntimui
-     #   server.ehlo()
-      #  server.login(sender, password)
-       # server.send_message(msg)
-        #server.quit()
+    with smtplib.SMTP_SSL(serverName) as server: # atidarome smtp serveri zinutes siuntimui
+        server.ehlo()
+        server.login(sender, password)
+        server.send_message(msg)
+        server.quit()
 
 # domenu testavimas TXT formatu
 # iskvieciama zonemaster-cli funkcija, norint skenuoti nurodytus domenus
@@ -160,12 +158,8 @@ cmd = 'zonemaster-cli' # zonemaster-cli komanda
 
 # testo failu direktorijos
 
-#TODO domenu saraso parsisiuntimas is url
-#TODO pati url laikyti konfiguracijos faile
-#TODO output failu direktorija konfiguracijos faile, situs palikt default
-#TODO narsyti configuracijos failo per direktorijas
-
-configFilePaths =['/etc/pyscantool/config.ini', 'home/karolis/pyscantool/config.ini', '/home/karolis/config.ini', 'config.ini']
+homeDir = os.path.expanduser('~')
+configFilePaths =['/etc/pyscantool/config.ini', homeDir + '/pyscantool/config.ini', homeDir + '/config.ini', 'config.ini']
 for cPath in configFilePaths:
     if os.path.exists(cPath):
         config = configparser.ConfigParser()
@@ -178,7 +172,6 @@ if not 'config' in globals():
 
 # Testavimo budo nuskaitymas is config.ini failo
 
-sleepTime = config['sleep-time']['sleep']
 tests = config['test-cases']['tests'].split(',')
 poolCount = config['pool-count']['poolCount']
 reportFormat = config['report-format']['format']
@@ -199,13 +192,12 @@ testDirOld = reportDir +'testurezultataiseni/'
 domainFile = requests.get(url)
 open('domainFile.txt', 'wb').write(domainFile.content)
 with open ('domainFile.txt') as f:
-    domains = f.read()
-    domains = domains.replace('\n', '').split(',')
+    domains = f.read().splitlines()
 
 domainStr = ' '.join(map(str,domains))
 testStr = ' '.join(map(str,tests))
 
-if not os.path.exists(testDir):
+if not os.path.exists(testDir): # Tikrinam ar egzistuoja testu direktorijos
     os.makedirs(testDir)
 if not os.path.exists(testDirOld):
     os.makedirs(testDirOld)
@@ -260,6 +252,7 @@ elif reportFormat == 'txt': # Raporto kurimas TXT formatu
     with Pool(processes=int(poolCount)) as pool: # parallel testu vykdymas
         pool.map(skenavimasTxt, domains) # Pool kiekis priklauso nuo nurodyto kiekio
     print('uztruko %s sekundes' % (time.time() - start_time))
+    raportoFailasTxt()
     diff='' # susirasom naujai rastas klaidas i string kintamaji
     for domain in domains:
         diff += klaiduPalyginimasTxt(domain)
