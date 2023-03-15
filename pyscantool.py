@@ -18,26 +18,37 @@ from email.message import EmailMessage
 
 def email(body, files):
     # Nuskaitom duomenis is konfiguracijos failo
-    receivers = config['email-receivers']['receivers'].split(',') 
-    serverName = config['smtp-server']['server']
-    sender = config['email-sender']['sender']
-    password = config['sender-password']['password']
+    receivers = config['email-parameters']['receivers'].split(',') 
+    serverName = config['email-parameters']['server']
+    sender = config['email-parameters']['sender']
+    password = config['email-parameters']['password']
     msg=EmailMessage() # el. pasto zinutes kurimas
     msg['subject']='Domenu skenavimo rezultatai'
     msg['from']=sender
     msg['to']=receivers
     msg.set_content(body)
-    
+
     for f in files: # nuskaitom failus kuriuos siusime
         with open(f) as file:
             file_data=file.read()
             file_name=file.name
             msg.add_attachment(file_data,filename=file_name)
-    with smtplib.SMTP_SSL(serverName) as server: # atidarome smtp serveri zinutes siuntimui
-        server.ehlo()
-        server.login(sender, password)
-        server.send_message(msg)
-        server.quit()
+            print(body)
+
+    if serverName:
+        print ('yra kazkoks serveris irasytas')
+
+   # with smtplib.SMTP_SSL(serverName) as server: # atidarome smtp serveri zinutes siuntimui
+    #    server.ehlo()
+     #   server.login(sender, password)
+      #  server.send_message(msg)
+       # server.quit()
+    else:
+        with smtplib.SMTP('localhost:1025') as server:
+            print('localhostu siunciu')
+            server.set_debuglevel(1)
+            server.send_message(msg)
+            server.quit
 
 # domenu testavimas TXT formatu
 # iskvieciama zonemaster-cli funkcija, norint skenuoti nurodytus domenus
@@ -143,8 +154,9 @@ def palyginimasTxt(diff):
         diff = 'Domenu skenavimo metu nebuvo rasta nauju klaidu'
         email(diff, files)
 
-
+#==================================
 # kodo pradzia
+#==================================
 
 f = open ('lock', 'w')
 try: fcntl.lockf (f, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -172,11 +184,11 @@ if not 'config' in globals():
 
 # Testavimo budo nuskaitymas is config.ini failo
 
-tests = config['test-cases']['tests'].split(',')
-poolCount = config['pool-count']['poolCount']
-reportFormat = config['report-format']['format']
-reportDir = config['report-directory']['directory']
-url = config['domain-url']['url'].strip('\n')
+tests = config['test-parameters']['tests'].split(',')
+poolCount = config['test-parameters']['poolCount']
+reportFormat = config['report-parameters']['format']
+reportDir = config['report-parameters']['directory']
+url = config['test-parameters']['url'].strip('\n')
 
 # Failu direktorijos
 

@@ -1,0 +1,14 @@
+{
+    "verpixe.lt": {
+        "root[9]": {
+            "args": {
+                "ns_ip_list": "2001:41d0:1:4a91::1"
+            },
+            "level": "WARNING",
+            "module": "ZONE",
+            "tag": "Z09_NO_RESPONSE_MX_QUERY",
+            "testcase": "ZONE09",
+            "timestamp": 10.7660880088806
+        }
+    }
+}
