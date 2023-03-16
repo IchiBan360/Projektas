@@ -33,27 +33,39 @@ def email(body, files):
             file_data=file.read()
             file_name=file.name
             msg.add_attachment(file_data,filename=file_name)
-            print(body)
 
     if serverName:
-        print ('yra kazkoks serveris irasytas')
+        if not sender or not password or receivers == ['']:
+            print('Nenurodyta reikalaujami duomenys el. pasto siuntimui')
+            exit(1)
+        else: 
+            try:
+                with smtplib.SMTP_SSL(serverName) as server: # atidarome smtp serveri zinutes siuntimui
+                    server.ehlo()
+                    server.login(sender, password)
+                    #server.send_message(msg)
+                    server.quit()
+            except:
+                print('Nepavyko nusiusti el. pasto')
+                exit(1)
 
-   # with smtplib.SMTP_SSL(serverName) as server: # atidarome smtp serveri zinutes siuntimui
-    #    server.ehlo()
-     #   server.login(sender, password)
-      #  server.send_message(msg)
-       # server.quit()
     else:
-        with smtplib.SMTP('localhost:1025') as server:
-            print('localhostu siunciu')
-            server.set_debuglevel(1)
-            server.send_message(msg)
-            server.quit
+        if not sender or receivers == ['']:
+            print ('Nenurodyta reikalaujami duomenys el. pasto siuntimui')
+            exit(1)
+        else:
+            try:
+                with smtplib.SMTP('localhost') as server:
+                    #server.send_message(msg)
+                    server.quit()
+            except:
+                print('Nepavyko nusiusti el. pasto')
+                exit(1)
+
 
 # domenu testavimas TXT formatu
 # iskvieciama zonemaster-cli funkcija, norint skenuoti nurodytus domenus
 def skenavimasTxt(domain):
-
     print('Tikrinamas domenas :', domain)
     if os.path.exists(testDir + domain + '.txt'): # perrasom senus domenu testu duomenis i faila
         shutil.copy(testDir + domain + '.txt', testDirOld)
@@ -62,13 +74,20 @@ def skenavimasTxt(domain):
     fd.writelines(domain + '\n')
     fd.writelines('\n')
     fd.close()
-    for test in tests: # vykdom visus nurodytus testus
+    if tests != ['']:
+        for test in tests: # vykdom visus nurodytus testus
+            fd = open(testDir + domain + '.txt', 'a')
+            fd.writelines('testo tipas: ' + test + '\n')
+            fd.close()
+            fd = open(testDir + domain + '.txt', 'a')
+            subprocess.run([cmd, domain, '--test', test, '--no-time', '--level', 'notice'], stdout=fd) # zonemaster-cli funkcija
+            fd.writelines('\n')
+    else:
         fd = open(testDir + domain + '.txt', 'a')
-        fd.writelines('testo tipas: ' + test + '\n')
+        fd.writelines('vykdomi visi testai \n')
         fd.close()
         fd = open(testDir + domain + '.txt', 'a')
-        subprocess.run([cmd, domain, '--test', test, '--no-time', '--level', 'notice'], stdout=fd) # zonemaster-cli funkcija
-        fd.writelines('\n')
+        subprocess.run([cmd, domain, '--no-time', '--level', 'notice'], stdout=fd) # zonemaster-cli funkcija
     fd.writelines('=======================================================\n')
     fd.writelines('\n')
     fd.close()
@@ -83,9 +102,12 @@ def skenavimasJson(domain):
         os.remove(testDir + domain + '.json')
     fd = open(testDir + domain + '.json', 'a')
     command = "{} {} --no-time --level notice --json".format(cmd, domain)
-    for test in tests: # vykdom visus nurodytus testus
-        command += " --test " + "{}".format(test)
-    subprocess.run(command, stdout=fd, shell=True) # zonemaster-cli funkcija
+    if tests != ['']:
+        for test in tests: # vykdom visus nurodytus testus
+            command += " --test " + "{}".format(test)
+        subprocess.run(command, stdout=fd, shell=True) # zonemaster-cli funkcija
+    else:
+        subprocess.run(command, stdout=fd, shell=True) # zonemaster-cli funkcija
     fd.close()
 
 # Json testu rezultatu failu lyginimas
@@ -97,7 +119,7 @@ def klaiduPalyginimasJson(domain):
             json_content_1 = json.loads(data1) # pakraunam abu json failus lyginimui
             data2 = file_2.read()
             json_content_2 = json.loads(data2)
-            res = DeepDiff(json_content_2, json_content_1, ignore_string_type_changes = False, exclude_regex_paths="timestamp").to_json()
+            res = DeepDiff(json_content_2, json_content_1, exclude_paths='timestamp').to_json()
         return(res)
     else:
         return('{}')
@@ -171,7 +193,8 @@ cmd = 'zonemaster-cli' # zonemaster-cli komanda
 # testo failu direktorijos
 
 homeDir = os.path.expanduser('~')
-configFilePaths =['/etc/pyscantool/config.ini', homeDir + '/pyscantool/config.ini', homeDir + '/config.ini', 'config.ini']
+configFilePaths =['/etc/pyscantool/config.ini', os.path.join(homeDir + '/pyscantool/config.ini'),
+                  os.path.join(homeDir + '/config.ini'), 'config.ini']
 for cPath in configFilePaths:
     if os.path.exists(cPath):
         config = configparser.ConfigParser()
@@ -182,6 +205,8 @@ if not 'config' in globals():
     print('nera konfiguracijos failo!')
     exit(1)
 
+
+
 # Testavimo budo nuskaitymas is config.ini failo
 
 tests = config['test-parameters']['tests'].split(',')
@@ -190,21 +215,33 @@ reportFormat = config['report-parameters']['format']
 reportDir = config['report-parameters']['directory']
 url = config['test-parameters']['url'].strip('\n')
 
+if not poolCount: # jei nebus nurodyta pool kiekio, default padarom 4
+    poolCount = 4
+
 # Failu direktorijos
 
-testOut = reportDir +'testresult.txt'
-testOutJson = reportDir +'testresultJson.json'
-testErrorJson = reportDir +'testErrorJson.json'
-testDir = reportDir +'testurezultatai/'
-testDirOld = reportDir +'testurezultataiseni/'
+testOut = os.path.join(reportDir +'testresult.txt')
+testOutJson = os.path.join(reportDir +'testresultJson.json')
+testErrorJson = os.path.join(reportDir +'testErrorJson.json')
+testDir = os.path.join(reportDir +'testurezultatai/')
+testDirOld = os.path.join(reportDir +'testurezultataiseni/')
 
 # Domenu saraso parsisiuntimas is interneto
 # ir duomenu nuskaitymas
 
 domainFile = requests.get(url)
-open('domainFile.txt', 'wb').write(domainFile.content)
+
+if domainFile.status_code != 200: # tikrinam, ar domenu failas yra pasiekiamas
+    print('Domenu failas nepasiekiamas, {} klaida'.format(domainFile.status_code))
+    exit(1)
+
+open('domainFile.txt', 'wb').write(domainFile.content) # Irasom domenus i lokalu faila
 with open ('domainFile.txt') as f:
     domains = f.read().splitlines()
+
+if domains == ['']: # Tikrinam, ar faile isvis yra domenu
+    print('Domenų sąrašas tuščias!')
+    exit(1)
 
 domainStr = ' '.join(map(str,domains))
 testStr = ' '.join(map(str,tests))
@@ -248,7 +285,7 @@ if reportFormat == 'json': # Raporto kurimas JSON formatu
         body = ('Domenu skenavimo metu nebuvo rasta nauju klaidu!\n\nSkenuoti domenai: {} \n\nDaryti testai: {}'.format(domainStr,testStr))
         files = [testOutJson]
     email(body,files)
-    print('testavimas atliktas sekmingai')
+    print('\ntestavimas atliktas sekmingai')
     exit(0)
 
 elif reportFormat == 'txt': # Raporto kurimas TXT formatu

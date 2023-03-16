@@ -1,14 +1,48 @@
 {
+    "going.lt": {
+        "root[10]": {
+            "args": {
+                "domain": "going.lt",
+                "ns": "ns1.sedoparking.com/91.195.241.8"
+            },
+            "level": "ERROR",
+            "module": "NAMESERVER",
+            "tag": "BREAKS_ON_EDNS",
+            "testcase": "NAMESERVER02",
+            "timestamp": 11.6057369709015
+        },
+        "root[11]": {
+            "args": {
+                "domain": "going.lt",
+                "ns": "ns2.sedoparking.com/91.195.240.8"
+            },
+            "level": "ERROR",
+            "module": "NAMESERVER",
+            "tag": "BREAKS_ON_EDNS",
+            "testcase": "NAMESERVER02",
+            "timestamp": 21.8188591003418
+        }
+    },
     "verpixe.lt": {
         "root[9]": {
             "args": {
                 "ns_ip_list": "2001:41d0:1:4a91::1"
             },
             "level": "WARNING",
-            "module": "ZONE",
-            "tag": "Z09_NO_RESPONSE_MX_QUERY",
-            "testcase": "ZONE09",
-            "timestamp": 10.7660880088806
+            "module": "NAMESERVER",
+            "tag": "N10_NO_RESPONSE_EDNS1_QUERY",
+            "testcase": "NAMESERVER10",
+            "timestamp": 22.4674959182739
+        },
+        "root[10]": {
+            "args": {
+                "ns_ip_list": "2001:41d0:1:4a91::1"
+            },
+            "level": "WARNING",
+            "module": "NAMESERVER",
+            "tag": "N11_NO_RESPONSE",
+            "testcase": "NAMESERVER11",
+            "timestamp": 22.6133620738983
         }
     }
 }
