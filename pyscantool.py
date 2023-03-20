@@ -18,10 +18,6 @@ from email.message import EmailMessage
 
 def email(body, files):
     # Nuskaitom duomenis is konfiguracijos failo
-    receivers = config['email-parameters']['receivers'].split(',') 
-    serverName = config['email-parameters']['server']
-    sender = config['email-parameters']['sender']
-    password = config['email-parameters']['password']
     msg=EmailMessage() # el. pasto zinutes kurimas
     msg['subject']='Domenu skenavimo rezultatai'
     msg['from']=sender
@@ -35,33 +31,26 @@ def email(body, files):
             msg.add_attachment(file_data,filename=file_name)
 
     if serverName:
-        if not sender or not password or receivers == ['']:
-            print('Nenurodyta reikalaujami duomenys el. pasto siuntimui')
+        try:
+            with smtplib.SMTP_SSL(serverName) as server: # atidarome smtp serveri zinutes siuntimui
+                server.ehlo()
+                server.set_debuglevel(1)
+                server.login(sender, password)
+                #server.send_message(msg)
+                server.quit()
+                print('\nel.pastas nusiustas sekmingai\n')
+        except:
+            print('\nNepavyko nusiusti el. pasto\n')
             exit(1)
-        else: 
-            try:
-                with smtplib.SMTP_SSL(serverName) as server: # atidarome smtp serveri zinutes siuntimui
-                    server.ehlo()
-                    server.login(sender, password)
-                    #server.send_message(msg)
-                    server.quit()
-            except:
-                print('Nepavyko nusiusti el. pasto')
-                exit(1)
 
     else:
-        if not sender or receivers == ['']:
-            print ('Nenurodyta reikalaujami duomenys el. pasto siuntimui')
+        try:
+            with smtplib.SMTP('localhost') as server:
+                #server.send_message(msg)
+                server.quit()
+        except:
+            print('\nNepavyko nusiusti el. pasto\n')
             exit(1)
-        else:
-            try:
-                with smtplib.SMTP('localhost') as server:
-                    #server.send_message(msg)
-                    server.quit()
-            except:
-                print('Nepavyko nusiusti el. pasto')
-                exit(1)
-
 
 # domenu testavimas TXT formatu
 # iskvieciama zonemaster-cli funkcija, norint skenuoti nurodytus domenus
@@ -74,7 +63,7 @@ def skenavimasTxt(domain):
     fd.writelines(domain + '\n')
     fd.writelines('\n')
     fd.close()
-    if tests != ['']:
+    if len(tests) != 0:
         for test in tests: # vykdom visus nurodytus testus
             fd = open(testDir + domain + '.txt', 'a')
             fd.writelines('testo tipas: ' + test + '\n')
@@ -102,7 +91,7 @@ def skenavimasJson(domain):
         os.remove(testDir + domain + '.json')
     fd = open(testDir + domain + '.json', 'a')
     command = "{} {} --no-time --level notice --json".format(cmd, domain)
-    if tests != ['']:
+    if len(tests) != 0:
         for test in tests: # vykdom visus nurodytus testus
             command += " --test " + "{}".format(test)
         subprocess.run(command, stdout=fd, shell=True) # zonemaster-cli funkcija
@@ -165,7 +154,6 @@ def raportoFailasJson():
     with open(testOutJson, 'w') as outfile:
         json.dump(errorList, outfile, indent=4)
 
-
 # tikrinam, ar buvo rasta nauju klaidu, ir siunciam el. pasta
 
 def palyginimasTxt(diff):
@@ -197,6 +185,7 @@ configFilePaths =['/etc/pyscantool/config.ini', os.path.join(homeDir + '/pyscant
                   os.path.join(homeDir + '/config.ini'), 'config.ini']
 for cPath in configFilePaths:
     if os.path.exists(cPath):
+        confdir = cPath
         config = configparser.ConfigParser()
         config.read(cPath)
         break
@@ -205,41 +194,69 @@ if not 'config' in globals():
     print('nera konfiguracijos failo!')
     exit(1)
 
+receivers = config.get('email-parameters', 'receivers', fallback='')
+receivers = [x for x in receivers.split(',') if x != ''] 
+serverName = config.get('email-parameters', 'server', fallback='')
+sender = config.get('email-parameters', 'sender', fallback='')
+password = config.get('email-parameters', 'password', fallback= '')
 
+if len(receivers) == 0 and not sender:
+    print('Nenurodyta gavejai arba siuntejas!')
+    exit(1)
+
+if serverName:
+    if not password:
+        print ('Naudojant smtp serveri privaloma irasyti slaptazodi!')
+        exit(1)
 
 # Testavimo budo nuskaitymas is config.ini failo
 
-tests = config['test-parameters']['tests'].split(',')
-poolCount = config['test-parameters']['poolCount']
-reportFormat = config['report-parameters']['format']
-reportDir = config['report-parameters']['directory']
-url = config['test-parameters']['url'].strip('\n')
+# Tikrina, ar yra tokia sekcija config faile
+# Jei ne, prideda sekcija ir uzpildo ja naudojamais pasirinkimais
 
-if not poolCount: # jei nebus nurodyta pool kiekio, default padarom 4
-    poolCount = 4
+if not config.has_section('test-parameters'):
+    print('truksta testu parametru key')
+    config.add_section('test-parameters')
+    config.set('test-parameters', 'tests', '')
+    config.set('test-parameters', 'url', '')
+    config.set('test-parameters', 'poolcount', '8')
+    with open(confdir, 'w') as fd:
+        config.write(fd)
+        fd.close
 
+tests = config.get('test-parameters', 'tests', fallback='')
+tests = [ x for x in tests.split(',') if x != '']
+poolCount = config.get('test-parameters', 'poolcount', fallback=8) 
+reportFormat = config.get('test-parameters', 'format', fallback='json')
+reportDir = config.get('report-parameters', 'directory', fallback= '')
+url = config.get('test-parameters', 'url'.strip('\n'), fallback='')
 # Failu direktorijos
 
-testOut = os.path.join(reportDir +'testresult.txt')
-testOutJson = os.path.join(reportDir +'testresultJson.json')
+testOut = os.path.join(reportDir +'testResult.txt')
+testOutJson = os.path.join(reportDir +'testResultJson.json')
 testErrorJson = os.path.join(reportDir +'testErrorJson.json')
-testDir = os.path.join(reportDir +'testurezultatai/')
-testDirOld = os.path.join(reportDir +'testurezultataiseni/')
+testDir = os.path.join(reportDir +'testuRezultatai/')
+testDirOld = os.path.join(reportDir +'testuRezultataiSeni/')
 
 # Domenu saraso parsisiuntimas is interneto
 # ir duomenu nuskaitymas
 
-domainFile = requests.get(url)
+if url:
 
-if domainFile.status_code != 200: # tikrinam, ar domenu failas yra pasiekiamas
-    print('Domenu failas nepasiekiamas, {} klaida'.format(domainFile.status_code))
+    domainFile = requests.get(url)
+
+    if domainFile.status_code != 200: # tikrinam, ar domenu failas yra pasiekiamas
+        print('Domenu failas nepasiekiamas, {} klaida'.format(domainFile.status_code))
+        exit(1)
+else:
+    print('Domenu failu url nenurodytas config.ini faile!')
     exit(1)
 
 open('domainFile.txt', 'wb').write(domainFile.content) # Irasom domenus i lokalu faila
 with open ('domainFile.txt') as f:
-    domains = f.read().splitlines()
+    domains = [x for x in f.read().splitlines() if x != '']
 
-if domains == ['']: # Tikrinam, ar faile isvis yra domenu
+if len(domains) == 0: # Tikrinam, ar faile isvis yra domenu
     print('Domenų sąrašas tuščias!')
     exit(1)
 

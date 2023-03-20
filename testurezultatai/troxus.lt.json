@@ -1,1 +1,0 @@
-[{"args":{"child":"217.146.66.65","parent":"195.8.218.131"},"level":"NOTICE","module":"DNSSEC","tag":"NEITHER_DNSKEY_NOR_DS","testcase":"DNSSEC07","timestamp":1.72689008712769},{"args":{"zone":"troxus.lt"},"level":"NOTICE","module":"DNSSEC","tag":"NOT_SIGNED","testcase":"UNSPECIFIED","timestamp":1.72750496864319}]

@@ -1,1 +1,0 @@
-[{"args":{"child":"79.98.25.142","parent":"195.8.218.131"},"level":"NOTICE","module":"DNSSEC","tag":"NEITHER_DNSKEY_NOR_DS","testcase":"DNSSEC07","timestamp":0.402591943740845},{"args":{"zone":"kursiutakas.lt"},"level":"NOTICE","module":"DNSSEC","tag":"NOT_SIGNED","testcase":"UNSPECIFIED","timestamp":0.402844905853271}]

@@ -1,1 +1,0 @@
-[{"args":{"child":"92.62.130.14","parent":"195.8.218.131"},"level":"NOTICE","module":"DNSSEC","tag":"NEITHER_DNSKEY_NOR_DS","testcase":"DNSSEC07","timestamp":0.670477151870728},{"args":{"zone":"andarsa.lt"},"level":"NOTICE","module":"DNSSEC","tag":"NOT_SIGNED","testcase":"UNSPECIFIED","timestamp":0.671034097671509}]
