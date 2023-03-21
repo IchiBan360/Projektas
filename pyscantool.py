@@ -48,6 +48,7 @@ def email(body, files):
             with smtplib.SMTP('localhost') as server:
                 #server.send_message(msg)
                 server.quit()
+                print('\nel.pastas nusiustas sekmingai\n')
         except:
             print('\nNepavyko nusiusti el. pasto\n')
             exit(1)
@@ -214,15 +215,15 @@ if serverName:
 # Tikrina, ar yra tokia sekcija config faile
 # Jei ne, prideda sekcija ir uzpildo ja naudojamais pasirinkimais
 
-if not config.has_section('test-parameters'):
-    print('truksta testu parametru key')
-    config.add_section('test-parameters')
-    config.set('test-parameters', 'tests', '')
-    config.set('test-parameters', 'url', '')
-    config.set('test-parameters', 'poolcount', '8')
-    with open(confdir, 'w') as fd:
-        config.write(fd)
-        fd.close
+#if not config.has_section('test-parameters'):
+ #   print('truksta testu parametru key')
+  #  config.add_section('test-parameters')
+   # config.set('test-parameters', 'tests', '')
+    #config.set('test-parameters', 'url', '')
+    #config.set('test-parameters', 'poolcount', '8')
+    #with open(confdir, 'w') as fd:
+    #    config.write(fd)
+    #    fd.close
 
 tests = config.get('test-parameters', 'tests', fallback='')
 tests = [ x for x in tests.split(',') if x != '']
@@ -230,13 +231,14 @@ poolCount = config.get('test-parameters', 'poolcount', fallback=8)
 reportFormat = config.get('test-parameters', 'format', fallback='json')
 reportDir = config.get('report-parameters', 'directory', fallback= '')
 url = config.get('test-parameters', 'url'.strip('\n'), fallback='')
+
 # Failu direktorijos
 
-testOut = os.path.join(reportDir +'testResult.txt')
-testOutJson = os.path.join(reportDir +'testResultJson.json')
-testErrorJson = os.path.join(reportDir +'testErrorJson.json')
-testDir = os.path.join(reportDir +'testuRezultatai/')
-testDirOld = os.path.join(reportDir +'testuRezultataiSeni/')
+testOut = os.path.join(reportDir +'testResult.txt') # txt raporto direktorija
+testOutJson = os.path.join(reportDir +'testResultJson.json') # json raporto direktorija
+testErrorJson = os.path.join(reportDir +'testErrorJson.json') # json nauju klaidu failo direktorija
+testDir = os.path.join(reportDir +'testuRezultatai/') # domenu klaidu raporto direktorija
+testDirOld = os.path.join(reportDir +'testuRezultataiSeni/') # domeun senu klaidu raporto direktorija
 
 # Domenu saraso parsisiuntimas is interneto
 # ir duomenu nuskaitymas
