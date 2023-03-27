@@ -182,9 +182,9 @@ def palyginimasTxt(diff):
         else:
             print('\nEmail nesiunciamas\n')
 
-#==================================
+#===================================
 # kodo pradzia
-#==================================
+#===================================
 
 f = open ('lock', 'w')
 try: fcntl.lockf (f, fcntl.LOCK_EX | fcntl.LOCK_NB)
