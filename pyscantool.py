@@ -36,7 +36,7 @@ def email(body, files):
             file_data=file.read()
             msg.add_attachment(file_data, filename = file_name)
 
-    if serverName:
+    if serverName: # Siuntimas per SMTP serveri, jei jis yra nurodytas
         try:
             with smtplib.SMTP_SSL(serverName) as server: # atidarome smtp serveri zinutes siuntimui
                 server.ehlo()
@@ -48,7 +48,7 @@ def email(body, files):
             print('\nNepavyko nusiusti el. pasto\n')
             exit(1)
 
-    else:
+    else: # Siuntimas per localhost SMTP serveri
         try:
             with smtplib.SMTP('localhost') as server:
                 server.send_message(msg)
@@ -121,23 +121,23 @@ def klaiduPalyginimasJson(domain):
             rjson = res.json
         return(rjson)
     else:
-        return('{}')
+        return('{}') # Jei neranda jokiu skirtumu grazina tuscia dict
 
 
 def klaiduPalyginimasTxt(domain):
-    differences = ''
 
+    differences = ''
     count = 0
     if os.path.exists(os.path.join(testDirOld, domain + '.txt')):
         with open(os.path.join(testDir, domain + '.txt')) as file_1, open(os.path.join(testDirOld, domain + '.txt')) as file_2:
             differ = Differ()
             for line in differ.compare(file_1.readlines(), file_2.readlines()):
                 diff = line
-                if diff.startswith('-'):
+                if diff.startswith('-'): # Tikrina, ar yra nauju skirtumu
                     count = count + 1
                     differences = differences + diff
         if count != 0:
-            body = (domain + ' testo metu buvo rasta nauju klaidu: \n' + differences)
+            body = (domain + ' testo metu buvo rasta nauju klaidu: \n' + differences + '\n')
             return body
         else:
             return differences
@@ -147,21 +147,19 @@ def klaiduPalyginimasTxt(domain):
 # sudedam visus domenu testu rezultatus i viena faila
 
 def raportoFailasTxt():
-    read_files = glob.glob(testDir + '/*.txt')
     with open (testOut, 'a') as outfile:
-        for domain in domains:
+        for domain in domains: # Sudeda domenu atskiras ataskaitas i viena bendra
             with open (testDir + domain + '.txt') as infile:
                 outfile.write(infile.read())
 
 def raportoFailasJson():
-    read_files = glob.glob(testDir + '/*.json')
     errorList = {}
     for domain in domains:
         with open(os.path.join(testDir, domain + '.json'), 'r') as infile:
             jsondiff = json.load(infile)
             errorList[domain] = jsondiff
     
-    with open(testOutJson, 'w') as outfile:
+    with open(testOutJson, 'w') as outfile: # Sudeda domenu atskiras ataskaitas i bendra json
         json.dump(errorList, outfile, indent=4)
         outfile.close()
 
@@ -172,13 +170,14 @@ def palyginimasTxt(diff):
     if firstTime:
         with open(testOut, 'r') as fd:
             errors = fd.read()
-            body = ('Testas buvo atliekamas pirma karta\n\nRastos klaidos: \n\n' + errors)
-            print(body) 
-    elif diff:
-        email(diff, files)
-    else:
+            body = ('Testas buvo atliekamas pirma karta\n\nSkenuoti domenai: {} \n\nDaryti testai: {} \n\nRastos klaidos: {}\n\nVisos klaidos pridetos testResult faile'.format(domainStr,testStr, errors))
+            email(body, files)
+    elif diff: # Jei rasta klaidu
+        body = 'Domenu skenavimo metu buvo rasta nauju klaidu!\n\nSkenuoti domenai: {} \n\nDaryti testai: {} \n\nNaujos klaidos: \n\n{} \n\nvisos klaidos pridetos testResult faile'.format(domainStr,testStr, diff)
+        email(body, files)
+    else: # Jei nerasta nauju klaidu
         if sendEmail:
-            diff = 'Domenu skenavimo metu nebuvo rasta nauju klaidu'
+            diff = 'Domenu skenavimo metu nebuvo rasta nauju klaidu!\n\nSkenuoti domenai: {} \n\nDaryti testai: {} \n\nSenos klaidos pridetos testResult faile'.format(domainStr,testStr)
             email(diff, files)
         else:
             print('\nEmail nesiunciamas\n')
@@ -233,16 +232,6 @@ if serverName:
 # Tikrina, ar yra tokia sekcija config faile
 # Jei ne, prideda sekcija ir uzpildo ja naudojamais pasirinkimais
 
-#if not config.has_section('test-parameters'):
- #   print('truksta testu parametru key')
-  #  config.add_section('test-parameters')
-   # config.set('test-parameters', 'tests', '')
-    #config.set('test-parameters', 'url', '')
-    #config.set('test-parameters', 'poolcount', '8')
-    #with open(confdir, 'w') as fd:
-    #    config.write(fd)
-    #    fd.close
-
 tests = config.get('test-parameters', 'tests', fallback='')
 tests = [ x for x in tests.split(',') if x != '']
 poolCount = config.get('test-parameters', 'poolcount', fallback=8) 
@@ -250,6 +239,7 @@ reportFormat = config.get('report-parameters', 'format', fallback='json')
 reportDir = config.get('report-parameters', 'directory', fallback= '')
 url = config.get('test-parameters', 'url'.strip('\n'), fallback='')
 sendEmail = config.getboolean('report-parameters', 'report-no-diff', fallback=True)
+
 # Failu direktorijos
 
 testOut = os.path.join(reportDir, 'testResult.txt') # txt raporto direktorija
@@ -286,7 +276,7 @@ firstTime = False
 if not os.path.exists(testDir): # Tikrinam ar egzistuoja testu direktorijos
     os.makedirs(testDir)
 if not os.path.exists(testDirOld):
-    firstTime = True
+    firstTime = True # Tikrinam ar darytu testu direktorija egzistuoja
     os.makedirs(testDirOld)
 errorString = ''
 if reportFormat == 'json': # Raporto kurimas JSON formatu
@@ -295,7 +285,7 @@ if reportFormat == 'json': # Raporto kurimas JSON formatu
         pool.map(skenavimasJson, domains) # Pool kiekis priklauso nuo nurodyto kiekio
     print('uztruko %s sekundes' % (time.time() - start_time))
     raportoFailasJson() #Sudaromas raporto failas su visomis klaidomis
-    if not testStr:
+    if not testStr: # Tikrinam, ar yra nurodyti testai config.ini faile
         testStr = 'Visi testai'
     errorlist = {} # susirasom visas naujas klaidas i zodyna
     for domain in domains:
@@ -304,7 +294,7 @@ if reportFormat == 'json': # Raporto kurimas JSON formatu
         if 'iterable_item_added' in jsondiff:
             errorlist[domain] = jsondiff['iterable_item_added'] #Isirasom tik naujai rastas klaidas
             errorString += '\n' + domain + ' domeno klaidos: \n'
-            for key in errorlist[domain].keys():
+            for key in errorlist[domain].keys(): # Klaidu sarasas el. pasto siuntimui
                 errorString += '''
                 Level: {} 
                 Module: {} 
@@ -312,13 +302,13 @@ if reportFormat == 'json': # Raporto kurimas JSON formatu
                 TestCase: {} 
                 '''.format(errorlist[domain][key]['level'], errorlist[domain][key]['module']
                             ,errorlist[domain][key]['tag'], errorlist[domain][key]['testcase'])
-    if firstTime:
+    if firstTime: # Jei testas daromas pirma karta
         print('Testas daromas pirma karta')
         shutil.copyfile(testOutJson, testErrorJson)
         body = ('Domenu skenavimas buvo atliktas pirma karta!\n\nSkenuoti domenai: {} \n\nDaryti testai: {} \n\nVisos klaidos pridetos testErrorJson faile'.format(domainStr,testStr))
         files=[testErrorJson]
         email(body,files)
-    elif errorlist.keys():
+    elif errorlist.keys(): # Jei buvo rasta nauju klaidu
         print('buvo rasta nauju klaidu')
         fd = open(testErrorJson, 'w')
         json.dump(errorlist, fd, indent=4)
@@ -327,9 +317,9 @@ if reportFormat == 'json': # Raporto kurimas JSON formatu
         body = ('Domenu skenavimo metu buvo rasta nauju klaidu!\n\nSkenuoti domenai: {} \n\nDaryti testai: {} \n\nNaujos klaidos: \n\n{} \n\nNaujos klaidos pridetos testErrorJson faile, visos klaidos yra testOutJson faile'.format(domainStr,testStr, errorString))
         files=[testOutJson,testErrorJson]
         email(body,files)
-    else:
+    else: # Jei nebuvo rasta nauju klaidu
         print('nerasta nauju klaidu')
-        if sendEmail:
+        if sendEmail: # Tikrinam, ar reikiu siusti el. pasta
             body = ('Domenu skenavimo metu nebuvo rasta nauju klaidu!\n\nSkenuoti domenai: {} \n\nDaryti testai: {} \n\nSenos klaidos pridetos testOutJson faile'.format(domainStr,testStr))
             files = [testOutJson]
             email(body,files)
@@ -355,7 +345,6 @@ elif reportFormat == 'txt': # Raporto kurimas TXT formatu
     diff='' # susirasom naujai rastas klaidas i string kintamaji
     for domain in domains:
         diff += klaiduPalyginimasTxt(domain)
-    print (diff)
     palyginimasTxt(diff) # Tikrinam, ar buvo rasta nauju klaidu, nuo to pakeiciam el. pasto zinute
     print('testavimas atliktas sekmingai')
     exit(0)
