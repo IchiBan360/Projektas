@@ -1,34 +1,145 @@
 {
-    "going.lt": {
-        "root[16]": {
+    "andarsa.lt": [
+        {
             "args": {
-                "ns_ip_list": "91.195.241.8"
+                "child": "92.62.130.14",
+                "parent": "195.8.218.131"
             },
-            "level": "WARNING",
-            "module": "NAMESERVER",
-            "tag": "N10_NO_RESPONSE_EDNS1_QUERY",
-            "testcase": "NAMESERVER10",
-            "timestamp": 45.3285341262817
-        },
-        "root[17]": {
-            "args": {
-                "ns_ip_list": "91.195.241.8"
-            },
-            "level": "WARNING",
-            "module": "NAMESERVER",
-            "tag": "N11_NO_RESPONSE",
-            "testcase": "NAMESERVER11",
-            "timestamp": 45.7244300842285
-        },
-        "root[18]": {
-            "args": {
-                "ns_ip_list": "91.195.241.8"
-            },
-            "level": "WARNING",
-            "module": "ZONE",
-            "tag": "Z09_NO_RESPONSE_MX_QUERY",
-            "testcase": "ZONE09",
-            "timestamp": 51.8360319137573
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.0504488945007324
         }
-    }
+    ],
+    "troxus.lt": [
+        {
+            "args": {
+                "child": "217.146.66.65",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.195879936218262
+        }
+    ],
+    "en.lt": [
+        {
+            "args": {
+                "child": "188.165.221.108",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.153255939483643
+        }
+    ],
+    "going.lt": [
+        {
+            "args": {
+                "child": "3.130.216.63",
+                "parent": "195.8.218.131"
+            },
+            "level": "ERROR",
+            "module": "DNSSEC",
+            "tag": "DS_BUT_NOT_DNSKEY",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.246155977249146
+        }
+    ],
+    "verpixe.lt": [
+        {
+            "args": {
+                "child": "2001:41d0:1:4a91::1",
+                "parent": "195.8.218.131"
+            },
+            "level": "WARNING",
+            "module": "DNSSEC",
+            "tag": "DNSKEY_BUT_NOT_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.10459303855896
+        }
+    ],
+    "yn.lt": [
+        {
+            "args": {
+                "child": "54.36.158.42",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.102527141571045
+        }
+    ],
+    "made.lt": [
+        {
+            "args": {
+                "child": "212.24.109.65",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.0545599460601807
+        }
+    ],
+    "kursiutakas.lt": [
+        {
+            "args": {
+                "child": "79.98.25.142",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.0359649658203125
+        }
+    ],
+    "chnadazai.lt": [
+        {
+            "args": {
+                "child": "162.159.24.201",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.0852880477905273
+        }
+    ],
+    "draugelis.lt": [
+        {
+            "args": {
+                "child": "195.12.188.34",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.055678129196167
+        }
+    ],
+    "eatme.lt": [
+        {
+            "args": {
+                "child": "13.248.158.159",
+                "parent": "195.8.218.131"
+            },
+            "level": "NOTICE",
+            "module": "DNSSEC",
+            "tag": "NEITHER_DNSKEY_NOR_DS",
+            "testcase": "DNSSEC07",
+            "timestamp": 0.169459104537964
+        }
+    ]
 }
