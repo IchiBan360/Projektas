@@ -1,1 +1,1 @@
-[]
+[{"args":{"asn":13335},"level":"WARNING","module":"CONNECTIVITY","tag":"IPV6_ONE_ASN","testcase":"CONNECTIVITY03","timestamp":6.71440505981445},{"args":{"child":"79.98.25.142","parent":"195.8.218.131"},"level":"NOTICE","module":"DNSSEC","tag":"NEITHER_DNSKEY_NOR_DS","testcase":"DNSSEC07","timestamp":8.25178694725037},{"args":{"zone":"kursiutakas.lt"},"level":"NOTICE","module":"DNSSEC","tag":"NOT_SIGNED","testcase":"UNSPECIFIED","timestamp":8.25198888778687}]

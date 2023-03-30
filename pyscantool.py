@@ -105,20 +105,21 @@ def skenavimasJson(domain):
 
 # Json testu rezultatu failu lyginimas
 
-def klaiduPalyginimasJsonNaujas(domain):
+def klaiduPalyginimasJson(domain):
     erList = []
+    # jei nera seno testo failo naujo turini perrasom i klaidas
     if not os.path.exists(os.path.join(testDirOld, domain + '.json')):
         with open(os.path.join(testDir, domain + '.json')) as fd:
             data = fd.read()
             json_content = json.loads(data)
             for errors in json_content:
                 erList.append(errors)
-    else:
+    else: # Jei yra klaidu failas
         file_old = open(os.path.join(testDirOld, domain + '.json'))
         data_old = file_old.read()
         json_content_old = json.loads(data_old)
         with open(os.path.join(testDir, domain + '.json')) as fd:
-            data = fd.read()
+            data = fd.read() # nusiskaitom rastas klaidas
             json_content = json.loads(data)
             for errors in json_content:
                 matches = False
@@ -126,23 +127,20 @@ def klaiduPalyginimasJsonNaujas(domain):
                 level = errors['level']
                 tag = errors['tag']
                 testcase = errors['testcase']
-                errorList = [arguments, level, tag, testcase]
+                errorList = [arguments, level, tag, testcase] # Isirasom tikrinamus dalykus i lista
                 for errors_old in json_content_old:
                     arguments_old = errors_old['args']
                     level_old = errors_old['level']
                     tag_old = errors_old['tag']
-                    testcase_old = errors_old['testcase']
+                    testcase_old = errors_old['testcase'] # ta pati darom ir su senu failu
                     errorList_old = [arguments_old, level_old, tag_old, testcase_old]
-                    if errorList == errorList_old:
+                    if errorList == errorList_old: # jei radom vienoda klaida stabdom tikrinima, klaida jau buvo
                         matches = True
                         break
-                if not matches:
-                    erList.append(errors)
-                    print(domain + " domeno rasta klaida"+str(errors)+ '\n')
+                if not matches: # Jei nebuvo klaidos, dedam ja i klaidu sarasa
+                    erList.append(errors) 
 
-    return erList
-    #TODO TAISYK SPAUSDINIMA NES CIA NESAMONE
-
+    return erList # grazinamas klaidu sarasas
 
 def klaiduPalyginimasTxt(domain):
 
@@ -306,13 +304,13 @@ if reportFormat == 'json': # Raporto kurimas JSON formatu
     start_time = time.time()
     with Pool(processes=int(poolCount)) as pool: # parallel testu vykdymas
         pool.map(skenavimasJson, domains) # Pool kiekis priklauso nuo nurodyto kiekio
-    print('uztruko %s sekundes' % (time.time() - start_time))
+    print('\nUztruko %.2f sekundes' % (time.time() - start_time))
 
     raportoFailasJson() #Sudaromas raporto failas su visomis klaidomis
     errorlist = {} # susirasom visas naujas klaidas i zodyna
     
     for domain in domains:
-        jsonDiff = klaiduPalyginimasJsonNaujas(domain)
+        jsonDiff = klaiduPalyginimasJson(domain)
         if jsonDiff:
             errorlist[domain] = jsonDiff
             errorString += '\n' + domain + ' domeno klaidos: \n'

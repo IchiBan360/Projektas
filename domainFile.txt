@@ -12,3 +12,4 @@ kursiutakas.lt
 chnadazai.lt
 draugelis.lt
 eatme.lt
+lifosa.lt
