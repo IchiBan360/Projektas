@@ -16,11 +16,6 @@ from email.message import EmailMessage
 
 def email(body, files):
 
-    doEmail = config.getboolean('test-parameters', 'testing', fallback=False)
-    if doEmail:
-        print('\nPrograma praejo iki email siuntimo, viskas atrodo good\n')
-        print(body)
-        return
     # Nuskaitom duomenis is konfiguracijos failo
     msg=EmailMessage() # el. pasto zinutes kurimas
     msg['subject']='Domenu skenavimo rezultatai'
@@ -204,31 +199,33 @@ def palyginimasTxt(diff):
 # kodo pradzia
 #===================================
 
-f = open ('lock', 'w')
+f = open ('lock', 'w') # Tikrinamas lock failas, jei jis yra atidarytas reiskia senas testas dar nebaigtas
 try: fcntl.lockf (f, fcntl.LOCK_EX | fcntl.LOCK_NB)
 except:
     print('[%s] Skenavimo irankis visdar atidarytas.\n' % time.strftime ('%c'))
     exit(1)
 
-print('dns skenavimo irankis \n')
+print('Domenu skenavimo irankis \n')
 
 cmd = 'zonemaster-cli' # zonemaster-cli komanda
 
 # testo failu direktorijos
 
-homeDir = os.path.expanduser('~')
+homeDir = os.path.expanduser('~') # Naudotojo namu direktorijos gavimas
 configFilePaths =['/etc/pyscantool/config.ini', os.path.join(homeDir, '/pyscantool/config.ini'),
                   os.path.join(homeDir, '/config.ini'), 'config.ini']
 for cPath in configFilePaths:
-    if os.path.exists(cPath):
+    if os.path.exists(cPath): # Tikrinama, ar egzistuoja konfiguracijos failas
         confdir = cPath
         config = configparser.ConfigParser()
         config.read(cPath)
         break
 
-if not 'config' in globals():
+if not 'config' in globals(): # Jei konfiguracijos failas neegzistuoja, nutraukiamas darbas
     print('nera konfiguracijos failo!')
     exit(1)
+
+# El. pasto siuntimui reikalingu parametru nuskaitymas
 
 receivers = config.get('email-parameters', 'receivers', fallback='')
 receivers = [x for x in receivers.split(',') if x != ''] 
@@ -236,19 +233,16 @@ serverName = config.get('email-parameters', 'server', fallback='')
 sender = config.get('email-parameters', 'sender', fallback='')
 password = config.get('email-parameters', 'password', fallback= '')
 
-if len(receivers) == 0 and not sender:
+if len(receivers) == 0 and not sender: # Tikrinama, ar yra yrasyti gavejai ir siuntejas
     print('Nenurodyta gavejai arba siuntejas!')
     exit(1)
 
 if serverName:
-    if not password:
+    if not password: # Ivedus serveri, tikrinama, ar yra ivestas slaptazodis
         print ('Naudojant smtp serveri privaloma irasyti slaptazodi!')
         exit(1)
 
-# Testavimo budo nuskaitymas is config.ini failo
-
-# Tikrina, ar yra tokia sekcija config faile
-# Jei ne, prideda sekcija ir uzpildo ja naudojamais pasirinkimais
+# Skenavimui reikalingu parametru nuskaitymas is config.ini failo
 
 tests = config.get('test-parameters', 'tests', fallback='')
 tests = [ x for x in tests.split(',') if x != '']
@@ -270,9 +264,7 @@ testDirOld = os.path.join(reportDir, 'testuRezultataiSeni/') # domeun senu klaid
 # ir duomenu nuskaitymas
 
 if url:
-
     domainFile = requests.get(url)
-
     if domainFile.status_code != 200: # tikrinam, ar domenu failas yra pasiekiamas
         print('Domenu failas nepasiekiamas, {} klaida'.format(domainFile.status_code))
         exit(1)
@@ -310,7 +302,7 @@ if reportFormat == 'json': # Raporto kurimas JSON formatu
     errorlist = {} # susirasom visas naujas klaidas i zodyna
     
     for domain in domains:
-        jsonDiff = klaiduPalyginimasJson(domain)
+        jsonDiff = klaiduPalyginimasJson(domain) # Senu ir nauju domenu skenavimo rezulatu lyginimas
         if jsonDiff:
             errorlist[domain] = jsonDiff
             errorString += '\n' + domain + ' domeno klaidos: \n'
@@ -324,28 +316,27 @@ if reportFormat == 'json': # Raporto kurimas JSON formatu
                 '''.format(entry['args'], entry['level'], entry['module']
                 ,entry['tag'], entry['testcase'])
     if  errorlist: # Jei buvo rasta nauju klaidu
-        print('buvo rasta nauju klaidu')
         fd = open(testErrorJson, 'w')
         json.dump(errorlist, fd, indent=4)
         fd.close()
-        print('rasta nauju klaidu')
+        print('\nRasta nauju klaidu')
         body = ('Domenu skenavimo metu buvo rasta nauju klaidu!\n\nSkenuoti domenai: {} \n\nDaryti testai: {} \n\nNaujos klaidos: \n\n{} \n\nNaujos klaidos pridetos testErrorJson faile, visos klaidos yra testResultJson faile'.format(domainStr,testStr, errorString))
         files=[testOutJson,testErrorJson]
-        email(body,files)
+        email(body,files) # el. pasto siuntimas
     else: # Jei nebuvo rasta nauju klaidu
-        print('nerasta nauju klaidu')
+        print('\nNerasta nauju klaidu')
         if sendEmail: # Tikrinam, ar reikiu siusti el. pasta
             body = ('Domenu skenavimo metu nebuvo rasta nauju klaidu!\n\nSkenuoti domenai: {} \n\nDaryti testai: {} \n\nSenos klaidos pridetos testResultJson faile'.format(domainStr,testStr))
             files = [testOutJson]
             email(body,files)
         else:
-            print('\nEmail nesiunciamas\n')
-    print('\ntestavimas atliktas sekmingai')
+            print('\nEmail nesiunciamas')
+    print('\nTestavimas atliktas sekmingai')
     exit(0)
 
 elif reportFormat == 'txt': # Raporto kurimas TXT formatu
 
-    fd = open(testOut, 'a') # irasom domenu ir testu pavadinimus
+    fd = open(testOut, 'w') # irasom domenu ir testu pavadinimus
     fd.writelines('Testuojami domenai: ' + domainStr + '\n')
     fd.writelines('\n')
     fd.writelines('Testu tipai: ' + testStr + '\n')
@@ -355,13 +346,13 @@ elif reportFormat == 'txt': # Raporto kurimas TXT formatu
     start_time = time.time()
     with Pool(processes=int(poolCount)) as pool: # parallel testu vykdymas
         pool.map(skenavimasTxt, domains) # Pool kiekis priklauso nuo nurodyto kiekio
-    print('uztruko %s sekundes' % (time.time() - start_time))
+    print('\nUztruko %.2f sekundes' % (time.time() - start_time))
     raportoFailasTxt()
     diff='' # susirasom naujai rastas klaidas i string kintamaji
     for domain in domains:
         diff += klaiduPalyginimasTxt(domain)
     palyginimasTxt(diff) # Tikrinam, ar buvo rasta nauju klaidu, nuo to pakeiciam el. pasto zinute
-    print('testavimas atliktas sekmingai')
+    print('\nTestavimas atliktas sekmingai')
     exit(0)
 
 else: # Suvedus bloga norima raporto formata niekas nebus daroma
